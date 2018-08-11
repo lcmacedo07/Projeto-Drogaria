@@ -96,6 +96,8 @@ Route::group(['prefix' => 'restrict', 'middleware' => ['auth']], function() {
 
 Auth::routes();
 
-/* CONTROLES DO ACESSO PÚBLICO  */
+Route::get('/fotos', 'Site\SiteController@fotos');
+Route::get('/faleconosco', 'Site\SiteController@faleconosco');
+
+Route::get('/home', 'Site\SiteController@home');
 Route::get('/', 'Site\SiteController@index');
-Route::get('/home', 'HomeController@index');

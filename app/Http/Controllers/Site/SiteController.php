@@ -2,14 +2,6 @@
 
 namespace App\Http\Controllers\Site;
 use App\Http\Controllers\Controller;
-//use App\Http\Controllers\StandardControllerPublic;
-//use App\Models\Restrito\Categorias;
-//use App\Models\Restrito\SubCategorias;
-//use App\User;
-//use App\Models\Restrito\Anuncios;
-//use App\Models\Restrito\Posts;
-
-//use Illuminate\Http\Request;
 
 class SiteController extends Controller {
 
@@ -30,9 +22,13 @@ class SiteController extends Controller {
 //    }
 
     public function index() {
-//        alert()->error('Houve um erro no registro. Corrija e tente novamente!', 'Falha na inserção!')->autoclose(4500);
-        return view('welcome');
-        //return view('site._home.index');
+        return view('site._home.index');
+    }
+    public function fotos() {
+        return view('site.fotos.index');
+    }
+    public function faleconosco() {
+        return view('site.faleconosco.index');
     }
 
 
