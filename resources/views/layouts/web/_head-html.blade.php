@@ -14,12 +14,18 @@
 
     <!-- CSS COMMON -->
     <title>Dashboard Drogaria</title>	
-    <link href="{{asset('/front/css/index.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset('/front/css/fotos.css')}}" rel="stylesheet" type="text/css">
-
-
-    <link rel="stylesheet" href="css/index.css">
-
+    <link href="{{asset('/front/css/index.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('/front/css/form.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('/front/css/sobre.css')}}" rel="stylesheet" type="text/css" />
+    
+    <!--<link rel="stylesheet" href="css/index.css">-->
+    
     <link href='favicon.ico' rel='shortcut icon' />
+    
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="{{url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css')}}">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="{{url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css')}}">
 
 </head>

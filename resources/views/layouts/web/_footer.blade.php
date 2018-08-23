@@ -1,5 +1,3 @@
-<footer id="rodape">
-    <p>Copyright &copy; 2018 - by Leandro Macedo</br>
-        <a href="#" target="_blank">Facebook</a>
-        <a href="#" target="_blank">Twitter</a></p>
-</footer>
+<div class="copyright text-center">
+    <p class="copyrigth">CopyRigth Drogaria 2018 - Todos os direitos reservados</p>
+</div>
