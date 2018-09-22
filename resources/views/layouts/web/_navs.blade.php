@@ -25,6 +25,10 @@
                 <li>
                     <a href="{{url('#contato')}}">CONTATO</a>
                 </li>
+                
+                <li>
+                    <a href="{{url('/login')}}">ENTRAR</a>
+                </li>
             </ul>
         </nav>
     </div>
