@@ -25,7 +25,6 @@
     <link rel="stylesheet" href="{{url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{url('http://fonts.googleapis.com/css?family=Oxygen:400,300,700')}}">
     <link rel="stylesheet" href="{{url('https://use.fontawesome.com/releases/v5.2.0/css/all.css')}}">
-    <link rel="stylesheet" href="{{url('https://use.fontawesome.com/releases/v5.2.0/css/all.css')}}">
 
     
 </head>
