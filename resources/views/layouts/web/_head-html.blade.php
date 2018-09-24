@@ -14,18 +14,18 @@
 
     <!-- CSS COMMON -->
     <title>Dashboard Drogaria</title>	
-    <link href="{{asset('/front/css/index.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('/front/css/form.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('/front/css/sobre.css')}}" rel="stylesheet" type="text/css" />
-    
-    <!--<link rel="stylesheet" href="css/index.css">-->
-    
-    <link href='favicon.ico' rel='shortcut icon' />
-    
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="{{url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css')}}">
+    <link href="{{asset('/front/css/style.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('/front/css/responsivo.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('/front/css/javascript.css')}}" rel="stylesheet" type="text/css" />
+
 
     <!-- Optional theme -->
     <link rel="stylesheet" href="{{url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css')}}">
+    <link rel="stylesheet" href="{{url('https://fonts.googleapis.com/css?family=Quicksand:500')}}">
+    <link rel="stylesheet" href="{{url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{url('http://fonts.googleapis.com/css?family=Oxygen:400,300,700')}}">
+    <link rel="stylesheet" href="{{url('https://use.fontawesome.com/releases/v5.2.0/css/all.css')}}">
+    <link rel="stylesheet" href="{{url('https://use.fontawesome.com/releases/v5.2.0/css/all.css')}}">
 
+    
 </head>

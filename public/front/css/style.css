@@ -1,0 +1,221 @@
+html, body{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+body{
+	font-family: Quicksand;
+}
+
+header{
+	width: 100%;
+	height: 100vh;
+	background: url(../imagens/farmacia.jpg) no-repeat 50% 50%;
+	background-size: cover;
+}
+
+.content{
+	width: 90%;
+	margin: 4em auto;
+	font-size: 20px;
+	line-height: 30px;
+	text-align: justify;
+}
+
+.logo {
+	position: fixed;
+	float: left;
+	margin: 30px 36px;
+	color: #000;
+	font-weight: bold;
+	font-size: 24px;
+	cursor: pointer;
+}
+
+.logo:hover {
+	color: red;
+	transition: 1.8s;
+}
+
+nav{
+	position: fixed;
+	width: 100%;
+}
+
+nav ul{
+	list-style: none;
+	background: rgba(0,0,0,0);
+	overflow: hidden;
+	color: #fff;
+	padding: 0;
+	text-align: right;
+	margin: 0;
+	transition: 1s;
+}
+
+nav.black ul{
+	background: #fff;
+}
+
+nav ul li{
+	display: inline-block;
+	padding: 30px;
+}
+
+nav ul li a{
+	text-decoration: none;
+	color: #000;
+	font-size: 20px;
+}
+
+nav ul li a:hover{
+	color: red;
+	transition: 1.5s;
+}
+
+nav ul li a.active:hover{
+	color: #00a65a;
+}
+
+.menu-icon{
+	width: 100%;
+	background: #000;
+	text-align: right;
+	box-sizing: border-box;
+	padding: 15px 24px;
+	cursor: pointer;
+	color: #fff;
+	display: none;
+}
+
+section.sec1{
+	width: 100%;
+	height: 85vh;
+	background-size: cover;
+	background-position: center;
+}
+
+.content{
+	margin-top: 80px;
+}
+
+.content-title{
+	font-size: 1.25em;
+	color: #00a65a;
+	text-transform: uppercase;
+}
+
+.content p{
+	line-height: 1.5;
+	color: #222;
+}
+
+.content span[class^=icon]{
+	font-size: 3.5em;
+	color: #652e78;
+}
+
+.last-articles-title{
+    background-color: #242a2c;
+    padding: 5px 0;
+}
+
+.last-articles-title h2{
+    font-size: 24px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+.last-articles-imgs{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-auto-rows: auto;
+    grid-gap: 0;
+    background: yellow;
+}
+.last-articles-imgs img{
+    display: block;
+    width: 100%;
+}
+
+.slider{
+    background-color: #242a2c;
+    padding: 50px 0 50px;
+    width: 100%;
+    overflow: auto;
+}
+
+.slideshow{
+    white-space: nowrap;
+}
+.slideshow figure{
+    display: inline-block;
+}
+
+.slideshow figure img{
+	width: 92%;
+
+}
+
+.quote-container{
+    background-color: #25303e;
+    padding: 50px 0;
+    border-bottom: 12px solid #25303e;
+}
+
+.quote-slideshow h2{
+    color: white;
+    font-size: 30px;
+    font-style: italic;
+    font-weight: normal;
+}
+
+.quote-slideshow figcaption{
+    color: white;
+    font-size: 18px;
+    text-align: center;
+}
+
+.maps{
+
+	width: 100%;
+	height: 450px;
+	margin-top: 15px;
+}
+
+.maps iframe{
+
+	width: 100%;
+}
+
+.footer{
+    background-color: #242a2c;
+    padding: 50px 0 250px;
+    color: #454e51;
+    font-size: 14px;
+}
+
+.footer-links li{
+    list-style: none;
+}
+.footer-links a{
+    color: #454e51;
+    display: block;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.footer-logo{
+    text-transform: uppercase;
+}
+
+
+.rodape{
+	background: #25303e;
+	color: #83969f;
+	text-align: center;
+	padding-bottom: 2em;
+	padding-top: 1em;
+}

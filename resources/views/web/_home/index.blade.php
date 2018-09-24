@@ -1,115 +1,72 @@
 @extends('layouts.web.layout-web')
 @section('content')
 
+    <section class="content">
+        <div class="maxwidth">
+            <article class="col-1_4">
+                <span class="icon-stopwatch"></span>
+                <h3 class="content-title">Designer Guff</h3>
+                <p>Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum</p>
+            </article>
 
-<section class="slide text-center section1 color-white">
-    <h1 class="titulo-slide">Informações sobre a Drogaria</h1>
-    <p class="descricao-slide">Tudo sobre o Drogaria, de maneira pratica e  profissional.</p>
+            <article class="col-1_4">
+                <span class="icon-stats-bars2"></span>
+                <h3 class="content-title">Detaild Stats</h3>
+                <p>Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum</p>
+            </article>
 
-    <a class="btn-saiba-mais" href="">Saiba Mais</a>
-</section>
+            <article class="col-1_4">
+                <span class="icon-clock"></span>
+                <h3 class="content-title">Dashboard</h3>
+                <p>Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum</p>
+            </article>
 
-<!-- Fim da Section de Informações do Blog -->
+            <article class="col-1_4">
+                <span class="icon-cog"></span>
+                <h3 class="content-title">Development</h3>
+                <p>Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum</p>
+            </article>
+        </div>
+    </section>
 
-<!-- Section Sobre -->
-
-<section class="sobre">
-    <a name="sobre"></a>
-    <div class="container text-center">
-        <h1 class="titulo">Sobre</h1>
-
-        <p class="descricao">Tudo que você precisa saber sobre a Drogaria<br>
-            de Maneira rapida. Informações onlines de nossos principais autores.</p>
+    <section class="sec1"></section>
 
 
-        <article class="col-md-3 detalhe-sobre">
-            <ul id="foto">
-                <li id="foto01"></li>
-            </ul>
-            <h1 class="titulo-sobre">Medicamentos Genericos</h1>
-            <p class="sobre">Todos os medicamentos Genericos</p>
-        </article>
-
-        <article class="col-md-3 detalhe-sobre">
-            <ul id="foto">
-                <li id="foto02"></li>
-            </ul>
-            <h1 class="titulo-sobre">Varios produtos de beleza</h1>
-            <p class="sobre">Produtos de belezas</p>
-        </article>
-
-        <article class="col-md-3 detalhe-sobre">
-            <ul id="foto">
-                <li id="foto05"></li>
-            </ul>
-            <h1 class="titulo-sobre">Corega</h1>
-            <p class="sobre">Produto Corega</p>
-        </article>
-
-        <article class="col-md-3 detalhe-sobre">
-            <ul id="foto">
-                <li id="foto06"></li>
-            </ul>
-            <h1 class="titulo-sobre">Fitness</h1>
-            <p class="sobre">Medicamentos fitness</p>
-        </article>
-
-    </div>
-</section>
-
-<!-- Fim da Section Sobre -->
-
-<!-- Section de Detalhes -->
-
-<section class="detalhes padding-40 section2">
-    <a name="detalhes"></a>
-    <div class="container text-center">
-        <h1 class="titulo">Detalhes</h1>
-        <p class="descricao color-white">Informações sobre a Drogaria toda semana!</p>
-
-        <article class="col-md-4 detalhe-sobre">
-
-            <h1 class="titulo-sobre">Conteúdo Online</h1>
-            <p class="sobre">Materias onlines.</p>
-        </article>
-
-        <article class="col-md-4 detalhe-sobre">
-
-            <h1 class="titulo-sobre">Orientação</h1>
-            <p class="sobre">Toda e qualquer dúvida que você tiver basta postar no Blog que será respondido o mais rápido possível</p>
-        </article>
-
-        <article class="col-md-4 detalhe-sobre">
-
-            <h1 class="titulo-sobre">1 Ano de Acesso</h1>
-            <p class="sobre">Você tem acesso a todo o conteúdo durante 1 ano, com total apoio.</p>
-        </article>
-
-    </div>
-</section>
-
-<!--  Fim da Section de Detalhes -->
-
-<!-- Section de Contato -->
-
-<section class="contato">
-    <a name="contato"></a>
-    <div class="container text-center">
-        <h1 class="titulo">Contato</h1>
-        <p class="descricao">Entre em contato e tenha todas as suas dúvidas respondidas<br>
-            Responderemos o mais rápido possível</p>
+    <div class="slider">            
+        <div class="slideshow">
+            <figure><img alt="" src="{{url('front/imagens/slider/slide1.jpg')}}" /></figure>
+            <figure><img alt="" src="{{url('front/imagens/slider/slide2.jpg')}}" /></figure>
+            <span class="prev" style="display: none;"><i class="fas fa-angle-left fa-4x"></i></span>
+            <span class="next" style="display: none;"><i class="fas fa-angle-right fa-4x"></i></span>
+        </div>                    
     </div>
 
-    <div class="contato-form">
-        <form class="blog-form">
-            <input type="text" name="nome" placeholder="Seu Nome">
-            <input type="email" name="email" placeholder="Seu E-mail">
-            <textarea name="descricao" placeholder="Sua descrição"></textarea>
 
-            <input type="submit" name="enviar" value="Enviar">
-        </form>
+    <section class="quote-container">
+
+        <div class="quote-slideshow">
+            <figure>
+                <h2>Nam mi enim, auctor non ultricies a, fringilla eu risus. Praesent vitae lorem et elit tincidunt accumsan suscipit eu libero. </h2>
+                <figcaption>
+                    Nam mi enim, auctor non ultricies.
+                </figcaption>
+            </figure>
+            <figure>
+                <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris mattis suscipit est, ut imperdiet tortor. Proin sed molestie massa.</h2>
+                <figcaption>
+                    Nam mi enim, auctor.
+                </figcaption>
+            </figure>
+            <span class="prev" style="display: none;"><i class="fas fa-angle-left fa-2x"></i></span>
+            <span class="next" style="display: none;"><i class="fas fa-angle-right fa-2x"></i></span>
+        </div>
+
+    </section>
+
+    <div class="maps">  
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d251265.5010661449!2d-48.48732280553023!3d-10.259691820136736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x933b3439911f1257%3A0x93b8070d05c818f!2sPalmas%2C+TO!5e0!3m2!1spt-BR!2sbr!4v1537641157435" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>  
     </div>
-</section>
+    
 
 @endsection()
 
