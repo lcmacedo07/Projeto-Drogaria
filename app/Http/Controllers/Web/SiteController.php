@@ -24,11 +24,11 @@ class SiteController extends Controller {
     public function index() {
         return view('web._home.index');
     }
-    public function fotos() {
-        return view('web.fotos.index');
+    public function about() {
+        return view('web.about.index');
     }
-    public function faleconosco() {
-        return view('web.faleconosco.index');
+    public function contact() {
+        return view('web.contact.index');
     }
 
 

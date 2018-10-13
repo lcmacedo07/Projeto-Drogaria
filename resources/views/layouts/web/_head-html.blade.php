@@ -1,30 +1,24 @@
 <head>
     <meta charset='utf-8'/>
     <meta name='csrf-token' content='{{ csrf_token() }}' />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script> window.Drog = <?php echo json_encode(['csrfToken' => csrf_token(),]); ?></script>
     @yield('title')
-
-    <meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no' />
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'/>
-    <meta name="msapplication-tap-highlight" content="no" />
-
 
     <!-- CSS PAGE -->
     @stack('css')
 
     <!-- CSS COMMON -->
-    <title>Dashboard Drogaria</title>	
-    <link href="{{asset('/front/css/style.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('/front/css/responsivo.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{asset('/front/css/javascript.css')}}" rel="stylesheet" type="text/css" />
+    <link href='{{url('http://fonts.googleapis.com/css?family=Roboto+Slab:400,700,300')}}' rel='stylesheet' type='text/css'>
+    <link href='{{url('http://fonts.googleapis.com/css?family=Roboto:400,500,300,700')}}' rel='stylesheet' type='text/css'>
+
+    <!--========== Stylesheets  ==========-->
+    <link rel="stylesheet" href="{{asset('front/css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{asset('front/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('front/css/jquery.bxslider.css')}}">
+    <link rel="stylesheet" href="{{asset('front/css/style.css')}}">
 
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="{{url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css')}}">
-    <link rel="stylesheet" href="{{url('https://fonts.googleapis.com/css?family=Quicksand:500')}}">
-    <link rel="stylesheet" href="{{url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')}}">
-    <link rel="stylesheet" href="{{url('http://fonts.googleapis.com/css?family=Oxygen:400,300,700')}}">
-    <link rel="stylesheet" href="{{url('https://use.fontawesome.com/releases/v5.2.0/css/all.css')}}">
-
-    
+    <link href="{{asset('front/css/animate.min.css')}}" rel="stylesheet">
+    <link href="{{asset('front/css/bootstrap.min.css')}}" rel="stylesheet">
 </head>

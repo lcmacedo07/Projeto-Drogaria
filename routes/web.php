@@ -96,8 +96,8 @@ Route::group(['prefix' => 'restrict', 'middleware' => ['auth']], function() {
 
 Auth::routes();
 
-Route::get('/fotos', 'Web\SiteController@fotos');
-Route::get('/faleconosco', 'Web\SiteController@faleconosco');
+Route::get('/about', 'Web\SiteController@about');
+Route::get('/contact', 'Web\SiteController@contact');
 
 Route::get('/home', 'Web\SiteController@home');
 Route::get('/', 'Web\SiteController@index');
