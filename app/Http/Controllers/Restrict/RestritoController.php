@@ -22,7 +22,7 @@ class RestritoController extends StandardController {
     protected $categorys;
     protected $purchases;
     protected $sales;
-    protected $nomeView = 'restrict._home';
+    protected $nomeView = 'restrict._home_';
     protected $gate;
     protected $page;
 

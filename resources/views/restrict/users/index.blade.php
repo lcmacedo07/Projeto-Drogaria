@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('layouts.restrict.app')
 @section('title'){{$titulo}} - {{config('app.name')}}@endsection
 @section('content')
 <nav aria-label='breadcrumb' class='m-t-20'>
@@ -7,14 +7,15 @@
         <li class='breadcrumb-item active' aria-current='page'>{{$titulo}}</li>
     </ol>
 </nav>
-<div class="box">
-    <div class="box-body">
-        <a href='{{url("/restrict/$page/create")}}' class='btn btn-primary white m-b-15'> Novo Registro</a>
-        <div class='row p-2'>
-            <div class='col-md-12'>
-                <div class='table-responsive alt-table'>
-                    <table id='table2' class="table table-bordered table-striped">
-                        <thead>
+
+<div class="col-md-12">
+    <div class="card card-plain">
+        <div class="box-body">
+            <a href='{{url("/restrict/$page/create")}}' class='btn btn-primary white m-b-15'> Novo Registro</a>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead class="">
                             <tr>
                                 <th>ID DO USÚARIO</th>
                                 <th>NOME</th>
@@ -33,7 +34,7 @@
                         </thead>
                         <tbody>
                             @foreach($data as $registro)
-                            
+
                             <tr>
                                 <td>{{$registro->id}}</td>
                                 <td>{{$registro->name}}</td>
@@ -49,18 +50,14 @@
                                 <td>{{$registro->type}}</td>
                                 <td>
                                     <div class='btn-group'>
-<!--                                        <a href='#' class='btn blue-black-bg white'  data-toggle='tooltip' data-placement='top' title='Delete'
-                                           onclick="deletar('{{url("/restrict/$page/$registro->id")}}')" id='urlDeletar' >
-                                            <i class='glyphicon glyphicon-trash'></i>
-                                        </a>-->
-                                        <a href='{{url("/restrict/$page/$registro->id/deletar")}}' 
+                                          <a href='{{url("/restrict/$page/$registro->id/deletar")}}' 
                                            onClick="return confirm('Você quer mesmo deletar?')" 
                                            class='btn blue-black-bg white' data-toggle='tooltip' data-placement='top' title='Delete'>
-                                            <i class='glyphicon glyphicon-trash'></i>
+                                            <i class="material-icons">delete</i>
                                         </a>
                                         <a href='{{url("/restrict/$page/$registro->id/edit")}}' 
                                            data-toggle='tooltip' data-placement='top' title='Editar' class='btn blue-black-bg white'>
-                                            <i class='glyphicon glyphicon-ok'></i>
+                                            <i class="material-icons">build</i>
                                         </a>
                                     </div>
                                 </td>
@@ -68,28 +65,22 @@
                             @endforeach
                         </tbody>
                     </table>
-
-                </div>  
-            </div>  
-        </div>  
+                </div>
+            </div>
+        </div>
     </div>
-</div>
 
-@push('css')
-<link rel='stylesheet' href='{{asset('css/dataTables.min.css')}}'/>
-<link rel='stylesheet' href='{{asset('css/sweetalert.css')}}'/>
-@endpush
+    @push('css')
 
-@push('js')
-<script src='{{asset('js/sweetalert.min.js')}}'></script>
-@include('sweet::alert')
-@include('restrict._includes.script-delete')
-<script src='{{asset('js/dataTables.min.js')}}'></script>
-<script>
-$(document).ready(function () {
-    $('#table2').DataTable();
-});
-</script>
-@endpush
+    <link rel='stylesheet' href='{{asset('css/sweetalert.css')}}'/>
 
-@endsection
+    @endpush
+
+    @push('js')
+
+    @include('sweet::alert')
+    <script src='{{asset('js/sweetalert.min.js')}}'></script>
+
+    @endpush
+
+    @endsection
