@@ -15,7 +15,7 @@
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-hover">
-                        <thead class="">
+                        <thead class="text-primary">
                             <tr>
                                 <th>CODIGO DA CIDADE</th>
                                 <th>CIDADE</th>
@@ -29,7 +29,7 @@
                                 <td> {{ $registro->cit_codigo }} </td>
                                 <td> {{ $registro->cit_city }} </td>
                                 <td> {{ $registro->cit_uf }} </td>
-                                <td>
+                                <td>    
                                     <div class='btn-group'>
                                         <a href='{{url("/restrict/$page/$registro->cit_codigo/deletar")}}' 
                                            onClick="return confirm('Você quer mesmo deletar?')" 

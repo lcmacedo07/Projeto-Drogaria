@@ -181,6 +181,14 @@
             
             @endif
             
+            <li class="nav-item ">
+                <a class="nav-link" href="{{ url('restrict/contact') }}">
+                    <i class="material-icons">message</i>
+                    <p>Mensagem</p>
+                </a>
+            </li>
+            
+            
         </ul>
     </div>
 </div>

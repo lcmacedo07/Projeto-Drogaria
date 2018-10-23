@@ -88,6 +88,11 @@ Route::group(['prefix' => 'restrict', 'middleware' => ['auth']], function() {
     //TRANSPORTADORAS
     Route::resource('conveyors', 'Restrict\ConveyorController');
     Route::get('conveyors/{id}/deletar', 'Restrict\ConveyorController@delete');
+    
+    Route::get('contact','Restrict\ContactController@index')->name('contact.index');
+    Route::get('contact/{id}','Restrict\ContactController@show')->name('contact.show');
+    Route::delete('contact/{id}','Restrict\ContactController@destroy')->name('contact.destroy');
+
 
     
     //Rota Inical do Dashboard
@@ -101,3 +106,5 @@ Route::get('/contact', 'Web\SiteController@contact');
 
 Route::get('/home', 'Web\SiteController@home');
 Route::get('/', 'Web\SiteController@index');
+
+Route::post('/contact','Web\ContactController@sendMessage')->name('contact.send');

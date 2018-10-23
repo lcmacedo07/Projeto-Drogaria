@@ -345,31 +345,39 @@
 
             <!-- Start form-wrap -->
             <div class="col-md-6 form-wrap">
-                <form id="contact-form" action="#">
+                <form class="contact-form" method="post" action="{{ route('contact.send') }}">
+                    @csrf
                     <div class="col-md-12 form-item">
                         <span class="input-icon">
                             <i class="fa fa-user"></i>
                         </span>
-                        <input id="name" class="form-input" type="text" name="name" placeholder="Your Name">
+                        <input id="name" class="form-input" type="text" name="name" required="required" placeholder="Seu Nome">
                     </div>
 
                     <div class="col-md-12 form-item">
                         <span class="input-icon">
                             <i class="fa fa-envelope-o"></i>
                         </span>
-                        <input id="email" class="form-input" type="email" name="email" placeholder="Your Email">
+                        <input id="email" class="form-input" type="email" name="email" required="required" placeholder="Seu E-mail">
+                    </div>
+                    
+                    <div class="col-md-12 form-item">
+                        <span class="input-icon">
+                            <i class="fa fa-envelope-o"></i>
+                        </span>
+                        <input id="subject" class="form-input" type="text" name="subject" required="required" placeholder="Assunto">
                     </div>
 
                     <div class="col-md-12 form-item">
                         <span class="input-icon">
                             <i class="fa fa-pencil-square-o"></i>
                         </span>
-                        <textarea id="message" class="form-input" name="message" cols="30" rows="4" placeholder="Your Message"></textarea>
+                        <textarea id="message" class="form-input" name="message" required="required" cols="30" rows="4" placeholder="Sua Mensagem"></textarea>
                     </div>
 
-                    <button type="submit" class="form-submit">
+                    <button type="submit" id="submit" name="submit" class="form-submit">
                         <span class="fa fa-paper-plane-o"></span> 
-                        Send Message
+                        Enviar
                     </button>
                 </form>
                 <!-- End form -->
@@ -386,5 +394,9 @@
 <div class="maps">  
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d251265.5010661449!2d-48.48732280553023!3d-10.259691820136736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x933b3439911f1257%3A0x93b8070d05c818f!2sPalmas%2C+TO!5e0!3m2!1spt-BR!2sbr!4v1537641157435" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>  
 </div>
+
+
+
+{!! Toastr::message() !!}
 
 @endsection

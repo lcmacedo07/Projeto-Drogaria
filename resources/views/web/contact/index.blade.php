@@ -55,31 +55,39 @@
 
             <!-- Start form-wrap -->
             <div class="col-md-6 form-wrap">
-                <form id="contact-form" action="#">
+                <form class="contact-form" method="post" action="{{ route('contact.send') }}">
+                    @csrf
                     <div class="col-md-12 form-item">
                         <span class="input-icon">
                             <i class="fa fa-user"></i>
                         </span>
-                        <input id="name" class="form-input" type="text" name="name" placeholder="Your Name">
+                        <input id="name" class="form-input" type="text" name="name" required="required" placeholder="Seu Nome">
                     </div>
 
                     <div class="col-md-12 form-item">
                         <span class="input-icon">
                             <i class="fa fa-envelope-o"></i>
                         </span>
-                        <input id="email" class="form-input" type="email" name="email" placeholder="Your Email">
+                        <input id="email" class="form-input" type="email" name="email" required="required" placeholder="Seu E-mail">
+                    </div>
+                    
+                    <div class="col-md-12 form-item">
+                        <span class="input-icon">
+                            <i class="fa fa-envelope-o"></i>
+                        </span>
+                        <input id="subject" class="form-input" type="text" name="subject" required="required" placeholder="Assunto">
                     </div>
 
                     <div class="col-md-12 form-item">
                         <span class="input-icon">
                             <i class="fa fa-pencil-square-o"></i>
                         </span>
-                        <textarea id="message" class="form-input" name="message" cols="30" rows="4" placeholder="Your Message"></textarea>
+                        <textarea id="message" class="form-input" name="message" required="required" cols="30" rows="4" placeholder="Sua Mensagem"></textarea>
                     </div>
 
-                    <button type="submit" class="form-submit">
+                    <button type="submit" id="submit" name="submit" class="form-submit">
                         <span class="fa fa-paper-plane-o"></span> 
-                        Send Message
+                        Enviar
                     </button>
                 </form>
                 <!-- End form -->
