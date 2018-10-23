@@ -20,6 +20,8 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
-        "inputmask": "^4.0.2"
+        "inputmask": "^4.0.2",
+        "npm": "^6.4.1",
+        "sweetalert2": "^7.28.8"
     }
 }

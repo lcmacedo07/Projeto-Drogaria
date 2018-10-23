@@ -1,4 +1,11 @@
-@extends('layouts.web.layout-web')
+@extends('layouts.web.app')
+
+@section('title','Drogaria')
+
+@push('css')
+
+@endpush
+
 @section('content')
 
 <!-- Start section-home -->
@@ -10,7 +17,7 @@
         </ol>
         <div class="carousel-inner">
 
-            <div class="item active" style="background-image: url('front/images/slider/bg1.jpg')">
+            <div class="item active" style="background-image: url('assets/frontend/images/slider/bg1.jpg')">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-7">
@@ -29,7 +36,7 @@
             </div>
             <!--/.item-->
 
-            <div class="item" style="background-image: url('front/images/slider/bg2.jpg')">
+            <div class="item" style="background-image: url('assets/frontend/images/slider/bg2.jpg')">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-7">
@@ -76,9 +83,9 @@
                 <!-- Start image-slider -->
                 <div class="image-slider">
                     <ul class="slider">
-                        <li><img src="{{asset('front/images/team1.png')}}" alt=""></li>
-                        <li><img src="{{asset('front/images/team2.png')}}" alt=""></li>
-                        <li><img src="{{asset('front/images/team3.png')}}" alt=""></li>
+                        <li><img src="{{asset('assets/frontend/images/team1.png')}}" alt=""></li>
+                        <li><img src="{{asset('assets/frontend/images/team2.png')}}" alt=""></li>
+                        <li><img src="{{asset('assets/frontend/images/team3.png')}}" alt=""></li>
                     </ul>
                 </div>
                 <!-- End image-slider -->
@@ -395,8 +402,28 @@
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d251265.5010661449!2d-48.48732280553023!3d-10.259691820136736!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x933b3439911f1257%3A0x93b8070d05c818f!2sPalmas%2C+TO!5e0!3m2!1spt-BR!2sbr!4v1537641157435" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>  
 </div>
 
+<footer class="footer">
+    <div class="container">
+        <h2 class="footer-logo"><img src="{{asset('assets/frontend/images/logo1.png')}}"></h2>
 
+        <p>Nam mi enim, auctor non ultricies a, fringilla eu risus. Praesent vitae lorem et elit tincidunt accumsan suscipit eu libero. Maecenas diam est, venenatis vitae dui in, vestibulum mollis arcu. Donec eu nibh tincidunt, dapibus sem eu, aliquam dolor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum consectetur commodo eros, vitae laoreet lectus aliq</p>
 
-{!! Toastr::message() !!}
+        <p>aliquam dolor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum consectetur commodo eros, vitae laoreet lectus aliq</p>
+
+    </div>
+
+</footer>
+
+<footer class="rodape">
+    <p>&copy; Untitled | Drogaria</p>
+
+    <p>Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+    </p>
+</footer>
+
 
 @endsection
+
+@push('js')
+
+@endpush

@@ -52,16 +52,21 @@
     </div>
 
     @push('css')
-    
+
     <link rel='stylesheet' href='{{asset('css/sweetalert.css')}}'/>
-    
+
     @endpush
 
     @push('js')
-    
-    @include('sweet::alert')
-    <script src='{{asset('js/sweetalert.min.js')}}'></script>
-    
+
+    <script src="sweetalert2/dist/sweetalert2.all.min.js"></script>
+
+    <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support -->
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
+
+    <script src="sweetalert2/dist/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="sweetalert2/dist/sweetalert2.min.css">
+
     @endpush
 
     @endsection

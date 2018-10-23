@@ -7,6 +7,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Gate;
+use Brian2694\Toastr\Facades\Toastr;
 
 class StandardController extends BaseController {
 
@@ -41,16 +42,10 @@ class StandardController extends BaseController {
             abort(403, 'Não Autorizado!');
         }
         $dadosForm = $this->request->all();
-//        dd($dadosForm);
         $validator = validator($dadosForm, $this->model->rules);
-        /*
+        
         if ($validator->fails()) {
-            $messages = $validator->messages();
-            return $messages;
-        }
-         */
-        if ($validator->fails()) {
-            alert()->error('Houve um erro no registro. Corrija e tente novamente!', 'Falha na inserção!')->autoclose(4500);
+            Toastr::error('Houve um erro no registro. Corrija e tente novamente!', 'Errors :(')->autoclose(4500);
             return redirect()->back()
                             ->withErrors($validator)
                             ->withInput()
@@ -60,7 +55,7 @@ class StandardController extends BaseController {
             $insert = $this->model->create($dadosForm);
         }
         if ($insert) {
-            alert()->success('', 'Registro inserido!');
+            Toastr::success('Registro inserido com Sucesso!', 'Success :)');
             return redirect("$this->redirectIndex")
                             ->with('page', $this->page)
                             ->with('titulo', $this->titulo);
@@ -90,14 +85,9 @@ class StandardController extends BaseController {
 
         $validator = validator($dadosForm, $rulesTratada);
 
-        /*
-          if( $validator->fails() ) {
-          $messages = $validator->messages();
-          return $messages;
-          }
-         */
+        
         if ($validator->fails()) {
-            alert()->error('Houve um erro no registro. Corrija e tente novamente!', 'Falha na inserção!')->autoclose(4500);
+            Toastr::error('Houve um erro no registro. Corrija e tente novamente!', 'Errors :(')->autoclose(4500);
             return redirect()->back()
                             ->withErrors($validator)
                             ->withInput()
@@ -109,7 +99,7 @@ class StandardController extends BaseController {
         }
 
         if ($update) {
-            alert()->success('', 'Registro alterado!');
+            Toastr::success('Registro alterado com Sucesso!', 'Success :)');
             return redirect("$this->redirectIndex")
                             ->with('page', $this->page)
                             ->with('titulo', $this->titulo);
@@ -127,7 +117,7 @@ class StandardController extends BaseController {
         if ($deleta) {
             return '1';
         } else {
-            alert()->error('Pressione F5 e verifique se o arquivo continua na lista. Caso o erro persista, entre em contato com a Administração.', 'Erro na exclusÃ£o!')->autoclose(4500);
+            Toastr::error('Pressione F5 e verifique se o arquivo continua na lista. Caso o erro persista, entre em contato com a Administração.', 'Errors :(')->autoclose(4500);
             return redirect("$this->redirectIndex")
                             ->with('page', $this->page)
                             ->with('titulo', $this->titulo);
@@ -155,12 +145,12 @@ class StandardController extends BaseController {
          $deleta = $item->delete();
          
          if ($deleta) {
-            alert()->success('Deletado com sucesso!');
+            Toastr::success('Deletado com sucesso!', 'Success :)');
             return redirect("$this->redirectIndex")
                             ->with('page', $this->page)
                             ->with('titulo', $this->titulo);
         } else {
-            alert()->error('Pressione F5 e verifique se o arquivo continua na lista. Caso o erro persista, entre em contato com a Administração.', 'Erro na exclusÃ£o!')->autoclose(4500);
+            Toastr::error('Pressione F5 e verifique se o arquivo continua na lista. Caso o erro persista, entre em contato com a Administração.', 'Errors :(')->autoclose(4500);
             return redirect("$this->redirectIndex")
                             ->with('page', $this->page)
                             ->with('titulo', $this->titulo);

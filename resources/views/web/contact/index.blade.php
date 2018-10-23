@@ -1,4 +1,11 @@
-@extends('layouts.web.layout-web')
+@extends('layouts.web.app')
+
+@section('title','Contact')
+
+@push('css')
+
+@endpush
+
 @section('content')
 
 <!-- Start section-contact -->
@@ -100,5 +107,17 @@
     <!-- End container -->
 </section>
 <!-- End section-contact -->
+
+<footer class="footer">
+    <div class="container">
+        <h2 class="footer-logo"><img src="{{asset('assets/frontend/images/logo1.png')}}"></h2>
+
+        <p>Nam mi enim, auctor non ultricies a, fringilla eu risus. Praesent vitae lorem et elit tincidunt accumsan suscipit eu libero. Maecenas diam est, venenatis vitae dui in, vestibulum mollis arcu. Donec eu nibh tincidunt, dapibus sem eu, aliquam dolor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum consectetur commodo eros, vitae laoreet lectus aliq</p>
+
+        <p>aliquam dolor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum consectetur commodo eros, vitae laoreet lectus aliq</p>
+
+    </div>
+
+</footer>
 
 @endsection
