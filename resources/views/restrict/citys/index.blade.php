@@ -8,14 +8,18 @@
     </ol>
 </nav>
 
+<nav>
+    {{ $data->links() }}
+</nav>
+
 <div class="col-md-12">
     <div class="card card-plain">
         <div class="box-body">
-            <a href='{{url("/restrict/$page/create")}}' class='btn btn-primary white m-b-15'> Novo Registro</a>
+            <a href='{{url("/restrict/$page/create")}}' class='btn btn-success white m-b-15'> Novo Registro</a>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-hover">
-                        <thead class="text-primary">
+                    <table class="table table-hover dataTable js-exportable">
+                        <thead class="">
                             <tr>
                                 <th>CODIGO DA CIDADE</th>
                                 <th>CIDADE</th>
@@ -26,21 +30,24 @@
                         <tbody>
                             @foreach($data as $registro)
                             <tr>
-                                <td> {{ $registro->cit_codigo }} </td>
-                                <td> {{ $registro->cit_city }} </td>
-                                <td> {{ $registro->cit_uf }} </td>
-                                <td>    
-                                    <div class='btn-group'>
-                                        <a href='{{url("/restrict/$page/$registro->cit_codigo/deletar")}}' 
+                                <td> {{ $registro->id }} </td>
+                                <td> {{ $registro->city }} </td>
+                                <td> {{ $registro->uf }} </td>
+                                <td>
+
+                                    <a href='{{url("/restrict/$page/$registro->id/deletar")}}' 
                                            onClick="return confirm('Você quer mesmo deletar?')" 
-                                           class='btn blue-black-bg white' data-toggle='tooltip' data-placement='top' title='Delete'>
-                                            <i class="material-icons">delete</i>
+                                            data-toggle='tooltip' data-placement='top' title='Deletar'>
+                                            <button class="btn btn-danger btn-sm" type="button">
+                                                <i class="material-icons">delete</i>
+                                            </button>
                                         </a>
-                                        <a href='{{url("/restrict/$page/$registro->cit_codigo/edit")}}' 
-                                           data-toggle='tooltip' data-placement='top' title='Editar' class='btn blue-black-bg white'>
+                                        <a href='{{url("/restrict/$page/$registro->id/edit")}}' 
+                                           data-toggle='tooltip' data-placement='top' title='Editar' >
+                                           <button class="btn btn-success btn-sm" type="button">
                                             <i class="material-icons">build</i>
+                                           </button>
                                         </a>
-                                    </div>
                                 </td>
                             </tr>
                             @endforeach
@@ -51,22 +58,13 @@
         </div>
     </div>
 
-    @push('css')
+@push('css')
 
-    <link rel='stylesheet' href='{{asset('css/sweetalert.css')}}'/>
 
-    @endpush
+@endpush
 
-    @push('js')
+@push('js')
 
-    <script src="sweetalert2/dist/sweetalert2.all.min.js"></script>
+@endpush
 
-    <!-- Include a polyfill for ES6 Promises (optional) for IE11, UC Browser and Android browser support -->
-    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
-
-    <script src="sweetalert2/dist/sweetalert2.min.js"></script>
-    <link rel="stylesheet" href="sweetalert2/dist/sweetalert2.min.css">
-
-    @endpush
-
-    @endsection
+@endsection

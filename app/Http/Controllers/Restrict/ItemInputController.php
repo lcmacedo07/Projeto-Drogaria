@@ -76,35 +76,4 @@ class ItemInputController extends StandardController {
         }
     }
     
-    public function store() {
-        $gate = $this->gate;
-        if (Gate::denies("$gate")) {
-            abort(403, 'Não Autorizado!');
-        }
-        $dadosForm = $this->request->all();
-        $validator = validator($dadosForm, $this->model->rules);
-        /*
-          if ($validator->fails()) {
-          $messages = $validator->messages();
-          return $messages;
-          }
-         */
-        if ($validator->fails()) {
-            alert()->error('Houve um erro no registro. Corrija e tente novamente!', 'Falha na inserção!')->autoclose(4500);
-            return redirect()->back()
-                            ->withErrors($validator)
-                            ->withInput()
-                            ->with('page', $this->page)
-                            ->with('titulo', $this->titulo);
-        } else {
-            $insert = $this->model->create($dadosForm);
-        }
-        if ($insert) {
-            alert()->success('', 'Registro inserido!');
-            return redirect("$this->redirectIndex")
-                            ->with('page', $this->page)
-                            ->with('titulo', $this->titulo);
-        }
-    }
-    
 }

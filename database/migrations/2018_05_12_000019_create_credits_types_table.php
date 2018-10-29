@@ -8,9 +8,8 @@ class CreateCreditsTypesTable extends Migration {
 
     public function up() {
         Schema::create('credits_types', function (Blueprint $table) {
-            $table->increments('ct_codigo');
-            $table->string('ct_descriptions', 120);
-            /* USAR EM TODAS */
+            $table->increments('id');
+            $table->string('descriptions', 120);
             $table->timestamps();
             $table->softDeletes();
         });

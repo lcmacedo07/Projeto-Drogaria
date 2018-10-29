@@ -10,12 +10,12 @@ class CreditsTypes extends Model {
     use SoftDeletes;
 
     protected $table = 'credits_types';
-    protected $primaryKey = 'ct_codigo';
+    protected $primaryKey = 'id';
     protected $fillable = [
-        'ct_descriptions',
+        'descriptions',
     ];
     public $rules = [
-        'ct_descriptions' => 'required|max:120',
+        'descriptions' => 'required|max:120',
     ];
 
 }

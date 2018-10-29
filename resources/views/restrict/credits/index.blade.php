@@ -8,10 +8,14 @@
     </ol>
 </nav>
 
+<nav>
+    {{ $data->links() }}
+</nav>
+
 <div class="col-md-12">
     <div class="card card-plain">
         <div class="box-body">
-            <a href='{{url("/restrict/$page/create")}}' class='btn btn-primary white m-b-15'> Novo Registro</a>
+            <a href='{{url("/restrict/$page/create")}}' class='btn btn-success white m-b-15'> Novo Registro</a>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-hover">
@@ -36,31 +40,33 @@
                         <tbody>
                             @foreach($data as $registro)
                             <tr>
-                                <td> {{ $registro->cred_codigo }} </td>
-                                <td> {{ $registro->ct_codigo }} </td>
-                                <td> {{ $registro->bud_codigo }} </td>
-                                <td> {{ $registro->cred_datereferencies }} </td>
-                                <td> {{ $registro->cred_datelaunch }} </td>
-                                <td> {{ $registro->cred_datematurity }} </td>
-                                <td> {{ $registro->cred_datereceipt }} </td>
-                                <td> {{ $registro->cred_value }} </td>
-                                <td> {{ $registro->cred_valuereceipt }} </td>
-                                <td> {{ $registro->cred_documentnumber }} </td>
-                                <td> {{ $registro->cred_ournumber }} </td>
-                                <td> {{ $registro->cred_status }} </td>
-                                <td> {{ $registro->cred_complements }} </td>
+                                <td> {{ $registro->id }} </td>
+                                <td> {{ $registro->credits_type_id }} </td>
+                                <td> {{ $registro->budget_id }} </td>
+                                <td> {{ $registro->datereferencies }} </td>
+                                <td> {{ $registro->datelaunch }} </td>
+                                <td> {{ $registro->datematurity }} </td>
+                                <td> {{ $registro->datereceipt }} </td>
+                                <td> {{ $registro->value }} </td>
+                                <td> {{ $registro->valuereceipt }} </td>
+                                <td> {{ $registro->documentnumber }} </td>
+                                <td> {{ $registro->ournumber }} </td>
+                                <td> {{ $registro->status }} </td>
+                                <td> {{ $registro->complements }} </td>
                                 <td>
-                                    <div class='btn-group'>
-                                        <a href='{{url("/restrict/$page/$registro->cred_codigo/deletar")}}' 
+                                         <a href='{{url("/restrict/$page/$registro->id/deletar")}}' 
                                            onClick="return confirm('Você quer mesmo deletar?')" 
-                                           class='btn blue-black-bg white' data-toggle='tooltip' data-placement='top' title='Delete'>
-                                            <i class="material-icons">delete</i>
+                                            data-toggle='tooltip' data-placement='top' title='Deletar'>
+                                            <button class="btn btn-danger btn-sm" type="button">
+                                                <i class="material-icons">delete</i>
+                                            </button>
                                         </a>
-                                        <a href='{{url("/restrict/$page/$registro->cred_codigo/edit")}}' 
-                                           data-toggle='tooltip' data-placement='top' title='Editar' class='btn blue-black-bg white'>
+                                        <a href='{{url("/restrict/$page/$registro->id/edit")}}' 
+                                           data-toggle='tooltip' data-placement='top' title='Editar' >
+                                           <button class="btn btn-success btn-sm" type="button">
                                             <i class="material-icons">build</i>
+                                           </button>
                                         </a>
-                                    </div>
                                 </td>
                             </tr>
                             @endforeach

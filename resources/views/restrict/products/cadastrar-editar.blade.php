@@ -12,8 +12,8 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                @if(isset($data->cat_codigo))
-                {!! Form::model($data, ['url' => "/restrict/$page/$data->cat_codigo", 'method' => 'PATCH',
+                @if(isset($data->id))
+                {!! Form::model($data, ['url' => "/restrict/$page/$data->id", 'method' => 'PATCH',
                 'class' => 'form-horizontal', 'enctype'=>'multipart/form-data']) !!}
                 @else
                 {!! Form::open(['url' => route("$page.store"), 'method' => 'POST', 'class' => 'form-horizontal',
@@ -22,84 +22,85 @@
 
                 <div class="card-body">
                     <div class='row'>
-                        <div class="input-group">
-                            <select name='cat_codigo' class='form-control'>
+                        <div class="input-field col-md-6">
+                            <label>CODIGO DA CATEGORIA</label>
+                            <select name='category_id' class='form-control'>
                                 @foreach($categorys as $category)
                                 <option 
-                                    @if(isset($data->cat_codigo) && ($data->cat_codigo==$category->cat_codigo)) @php echo 'selected'; @endphp @endif 
-                                    value="{{$category->cat_codigo}}" >
-                                    {{$category->cat_category}}
+                                    @if(isset($data->category_id) && ($data->category_id==$category->id)) @php echo 'selected'; @endphp @endif 
+                                    value="{{$category->id}}" >
+                                    {{$category->category}}
+                                </option>
+                                @endforeach
+                            </select>
+                        @if ($errors->has('category_id'))
+                        <span class='text-danger'> {{ $errors->first('category_id') }} </span>
+                        @endif
+                    </div>
+                    <div class='input-field col-md-6'>
+                        <label>CODIGO DO FORNECEDOR</label>
+                        <div class="input-group">
+                            <select name='provider_id' class='form-control'>
+                                @foreach($providers as $provider)
+                                <option 
+                                    @if(isset($data->provider_id) && ($data->provider_id==$provider->id)) @php echo 'selected'; @endphp @endif 
+                                    value="{{$provider->id}}" >
+                                    {{$provider->provider}}
                             </option>
                             @endforeach
                         </select>
-                        @if ($errors->has('cat_codigo'))
-                        <span class='text-danger'> {{ $errors->first('cat_codigo') }} </span>
+                        @if ($errors->has('provider_id'))
+                        <span class='text-danger'> {{ $errors->first('provider_id') }} </span>
                         @endif
                     </div>
                 </div>
-                <div class='input-field col-md-6'>
-                    <label>CODIGO DO FORNECEDOR</label>
+            </div>    
+            <div class="row m-t-20">
+                <div class='input-field col-md-4'>
+                    <label>PESO</label>
                     <div class="input-group">
-                        <select name='pro_codigo' class='form-control'>
-                            @foreach($providers as $provider)
-                            <option 
-                                @if(isset($data->pro_codigo) && ($data->pro_codigo==$provider->pro_codigo)) @php echo 'selected'; @endphp @endif 
-                                value="{{$provider->pro_codigo}}" >
-                                {{$provider->pro_provider}}
-                        </option>
-                        @endforeach
-                    </select>
-                    @if ($errors->has('pro_codigo'))
-                    <span class='text-danger'> {{ $errors->first('pro_codigo') }} </span>
+                        {!! Form::number('weight', null, ['required' => 'yes', 'min' => '1','class' => 'form-control']) !!}
+                        @if ($errors->has('weight'))
+                        <span class='text-danger'> {{ $errors->first('weight') }} </span>
+                        @endif
+                    </div>
+                </div>
+                <div class='input-field col-md-4'>
+                    <label>CONTROLADO</label>
+                    <div class="input-group">
+                        {!! Form::text('controlled', null, ['required' => 'yes', 'min' => '1', 'maxlength' => '200','class' => 'form-control']) !!}
+                        @if ($errors->has('controlled'))
+                        <span class='text-danger'> {{ $errors->first('controlled') }} </span>
+                        @endif
+                    </div>
+                </div>
+                <div class='input-field col-md-4'>
+                    <label>QUANTIDADE</label>
+                    <div class="input-group">
+                        {!! Form::number('determined_amount', null, ['required' => 'yes', 'min' => '1', 'class' => 'form-control']) !!}
+                        @if ($errors->has('determined_amount'))
+                        <span class='text-danger'> {{ $errors->first('determined_amount') }} </span>
+                        @endif
+                    </div>
+                </div>
+            </div>     
+            <div class="row m-t-20">
+                <div class='input-field col-md-12'>
+                    <label>DESCRICAO</label>
+                    {!! Form::textarea('description', null, ['required' => 'yes', 'min' => '1', 'maxlength' => '1000', 'class' => 'form-control']) !!}
+                    @if ($errors->has('description'))
+                    <span class='text-danger'> {{ $errors->first('description') }} </span>
                     @endif
                 </div>
+            </div>  
+            <div class='btn-group'>
+                <button type='reset' class='btn btn-default waves-effect'>Resetar</button>
+                <button type='submit' class='btn btn-success waves-effect waves-light'>Salvar Dados</button>
             </div>
-        </div>    
-        <div class="row m-t-20">
-            <div class='input-field col-md-4'>
-                <label>PESO</label>
-                <div class="input-group">
-                    {!! Form::number('prod_weight', null, ['required' => 'yes', 'min' => '1','class' => 'form-control']) !!}
-                    @if ($errors->has('prod_weight'))
-                    <span class='text-danger'> {{ $errors->first('prod_weight') }} </span>
-                    @endif
-                </div>
-            </div>
-            <div class='input-field col-md-4'>
-                <label>CONTROLADO</label>
-                <div class="input-group">
-                    {!! Form::text('prod_controlled', null, ['required' => 'yes', 'min' => '1', 'maxlength' => '200','class' => 'form-control']) !!}
-                    @if ($errors->has('prod_controlled'))
-                    <span class='text-danger'> {{ $errors->first('prod_controlled') }} </span>
-                    @endif
-                </div>
-            </div>
-            <div class='input-field col-md-4'>
-                <label>QUANTIDADE</label>
-                <div class="input-group">
-                    {!! Form::number('prod_determined_amount', null, ['required' => 'yes', 'min' => '1', 'class' => 'form-control']) !!}
-                    @if ($errors->has('prod_determined_amount'))
-                    <span class='text-danger'> {{ $errors->first('prod_determined_amount') }} </span>
-                    @endif
-                </div>
-            </div>
-        </div>     
-        <div class="row m-t-20">
-            <div class='input-field col-md-12'>
-                <label>DESCRICAO</label>
-                {!! Form::textarea('prod_description', null, ['required' => 'yes', 'min' => '1', 'maxlength' => '1000', 'class' => 'form-control']) !!}
-                @if ($errors->has('prod_description'))
-                <span class='text-danger'> {{ $errors->first('prod_description') }} </span>
-                @endif
-            </div>
-        </div>  
-        <hr/>
-        <div class='btn-group'>
-            <button type='reset' class='btn btn-default waves-effect'>Resetar</button>
-            <button type='submit' class='btn btn-primary waves-effect waves-light'>Salvar Dados</button>
+            {!! Form::close() !!}
         </div>
-        {!! Form::close() !!}
     </div>
+</div>
 </div>
 </div>
 

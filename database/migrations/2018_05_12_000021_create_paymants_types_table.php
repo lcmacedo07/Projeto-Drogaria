@@ -8,9 +8,8 @@ class CreatePaymantsTypesTable extends Migration {
 
     public function up() {
         Schema::create('paymants_types', function (Blueprint $table) {
-            $table->increments('pt_codigo');
-            $table->string('pt_description', 120);
-            /* USAR EM TODAS */
+            $table->increments('id');
+            $table->string('description', 120);
             $table->timestamps();
             $table->softDeletes();
         });

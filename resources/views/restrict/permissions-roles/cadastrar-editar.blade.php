@@ -55,7 +55,7 @@
             </div>
             <hr/>
             <div>
-                <button type='submit' class='btn btn-primary waves-effect waves-light'>Salvar Dados</button>
+                <button type='submit' class='btn btn-success waves-effect waves-light'>Salvar Dados</button>
             </div>
             {!! Form::close() !!}
         </div>
@@ -63,14 +63,12 @@
 </div>
 
 @push('css')
-<link rel='stylesheet' href='{{asset('bower_components/bootstrap-select/dist/css/bootstrap-select.css')}}'/>
 @endpush
 
 @push('js-topo')
 @endpush
 
 @push('js')
-<script src="{{asset('bower_components/bootstrap-select/dist/js/bootstrap-select.js')}}"></script>
 @endpush
 
 @endsection

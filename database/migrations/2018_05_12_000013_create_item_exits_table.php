@@ -14,14 +14,14 @@ class CreateItemExitsTable extends Migration
     public function up()
     {
         Schema::create('item_exits', function (Blueprint $table) {
-            $table->increments('iteme_codigo');
-            $table->integer('exi_codigo')->unsigned();
-            $table->foreign('exi_codigo')->references('exi_codigo')->on('exits')->onDelete('cascade');
-            $table->integer('prod_codigo')->unsigned();
-            $table->foreign('prod_codigo')->references('prod_codigo')->on('products')->onDelete('cascade');
-            $table->string('iteme_lot',30);
-            $table->integer('iteme_amount');
-            $table->double('iteme_value');
+            $table->increments('id');
+            $table->integer('exit_id')->unsigned();
+            $table->foreign('exit_id')->references('id')->on('exits')->onDelete('cascade');
+            $table->integer('product_id')->unsigned();
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->string('lot',30);
+            $table->integer('amount');
+            $table->double('value');
             $table->timestamps();
             $table->softDeletes();
         });

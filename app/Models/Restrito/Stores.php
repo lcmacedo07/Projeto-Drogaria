@@ -10,33 +10,33 @@ class Stores extends Model {
     use SoftDeletes;
 
     protected $table = 'stores';
-    protected $primaryKey = 'sto_codigo';
+    protected $primaryKey = 'id';
     protected $fillable = [ 
-            'cit_codigo',
-            'sto_name',
-            'sto_cnpj',
-            'sto_address',
-            'sto_uf',
-            'sto_telephone',
-            'sto_zip_code',
-            'sto_social_reason',
-            'sto_fantasy_name',
-            'sto_insc',
+            'city_id',
+            'name',
+            'cnpj',
+            'address',
+            'uf',
+            'telephone',
+            'zip_code',
+            'social_reason',
+            'fantasy_name',
+            'insc',
 
         
         ];
     
     public $rules = [
-        'cit_codigo' => 'required|numeric',
-        'sto_name' => 'required|max:30',
-        'sto_cnpj' => 'required|max:20',
-        'sto_address' => 'required|max:200',
-        'sto_uf' => 'required|max:2',
-        'sto_telephone' => 'required|max:14',
-        'sto_zip_code' => 'required|max:15',
-        'sto_social_reason' => 'required|max:200',
-        'sto_fantasy_name' => 'required|max:200',
-        'sto_insc' => 'required|max:20',
+        'city_id' => 'required|numeric',
+        'name' => 'required|max:30|unique:stores,name,((ID{?})),id',
+        'cnpj' => 'required|max:20|unique:stores,cnpj,((ID{?})),id',
+        'address' => 'required|max:200',
+        'uf' => 'required|max:2|unique:stores,uf,((ID{?})),id',
+        'telephone' => 'required|max:14|unique:stores,telephone,((ID{?})),id',
+        'zip_code' => 'required|max:15|unique:stores,zip_code,((ID{?})),id',
+        'social_reason' => 'required|max:200|unique:stores,social_reason,((ID{?})),id',
+        'fantasy_name' => 'required|max:200|unique:stores,fantasy_name,((ID{?})),id',
+        'insc' => 'required|max:20|unique:stores,insc,((ID{?})),id',
     ];
 
 }

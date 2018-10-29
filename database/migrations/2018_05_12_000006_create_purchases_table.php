@@ -13,13 +13,13 @@ class CreatePurchasesTable extends Migration {
      */
     public function up() {
         Schema::create('purchases', function (Blueprint $table) {
-            $table->increments('pur_codigo');
-            $table->integer('pro_codigo')->unsigned();
-            $table->foreign('pro_codigo')->references('pro_codigo')->on('providers')->onDelete('cascade');
-            $table->date('pur_date');
-            $table->string('pur_reference',200);
-            $table->double('pur_amount');
-            $table->double('pur_value');
+            $table->increments('id');
+            $table->integer('provider_id')->unsigned();
+            $table->foreign('provider_id')->references('id')->on('providers')->onDelete('cascade');
+            $table->date('date');
+            $table->string('reference',200);
+            $table->double('amount');
+            $table->double('value');
             $table->timestamps();
             $table->softDeletes();
         });

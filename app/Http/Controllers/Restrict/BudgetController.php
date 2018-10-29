@@ -64,24 +64,17 @@ class BudgetController extends StandardController {
     }
 
     public function show($id) {
-        /* exibindo os registros do orçamento $id e não desta model */
         $gate = $this->gate;
         if (Gate::denies("$gate")) {
             abort(403, 'Não Autorizado!');
         }
         $data = $this->model->find($id);
-        return view("{$this->nomeView}.show", compact('data'))
+        $users = $this->users->find($id);
+        return view("{$this->nomeView}.show", compact('data','users'))
                         ->with('page', $this->page)
                         ->with('titulo', $this->titulo);
     }
-   
-    public function pdf() {
-        $data = $this->model->leftJoin('users', 'users.id', 'budgets.user_id')->get();
-        $pdf = App::make('dompdf.wrapper');
-        $pdf->loadHTML(view("{$this->nomeView}.pdf", compact('data')));
-        return $pdf->stream();
-        
-    }     
+     
 
 }
 

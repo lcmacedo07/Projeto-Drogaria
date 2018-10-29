@@ -9,26 +9,24 @@
     </ol>
 </nav>
 
+
 <div class="col-md-12">
     <div class="card card-plain">
         <div class="box-body">
-            <a href='{{url("/restrict/$page/create")}}' class='btn btn-primary white m-b-15'> Novo Registro</a>
+            <a href='{{url("/restrict/$page/create")}}' class='btn btn-success white m-b-15'> Novo Registro</a>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead class="">
                             <tr>
-                                <th>ID DO USÚARIO</th>
-                                <th>NOME</th>
-                                <th>SEXO</th>
-                                <th>DATA DE NASCIMENTO</th>
-                                <th>CPF</th>
-                                <th>RG</th>
-                                <th>TELEFONE</th>
-                                <th>CELULAR</th>
-                                <th>CELULAR 2</th>
-                                <th>EMAIL</th>
-                                <th>SENHA</th>
+                                <th width='110px'>#</th>
+                                <th width='110px'>NOME</th>
+                                <th width='110px'>SEXO</th>
+                                <th width='110px'>NASC</th>
+                                <th width='110px'>CPF</th>
+                                <th width='110px'>TELEFONE</th>
+                                <th width='110px'>CELULAR</th>
+                                <th width='110px'>CELULAR 2</th>
                                 <th width='110px'>#</th>
                             </tr>
                         </thead>
@@ -41,24 +39,23 @@
                                 <td>{{$registro->genre}}</td>
                                 <td>{{$registro->date_of_birth}}</td>
                                 <td>{{$registro->cpf}}</td>
-                                <td>{{$registro->rg}}</td>
                                 <td>{{$registro->telephone}}</td>
                                 <td>{{$registro->cellphone}}</td>
                                 <td>{{$registro->cellphone2}}</td>
-                                <td>{{$registro->email}}</td>
-                                <td>{{$registro->password}}</td>
                                 <td>
-                                    <div class='btn-group'>
-                                        <a href='{{url("/restrict/$page/$registro->id/deletar")}}' 
+                                <a href='{{url("/restrict/$page/$registro->id/deletar")}}' 
                                            onClick="return confirm('Você quer mesmo deletar?')" 
-                                           class='btn blue-black-bg white' data-toggle='tooltip' data-placement='top' title='Delete'>
-                                            <i class="material-icons">delete</i>
+                                            data-toggle='tooltip' data-placement='top' title='Deletar'>
+                                            <button class="btn btn-danger btn-sm" type="button">
+                                                <i class="material-icons">delete</i>
+                                            </button>
                                         </a>
                                         <a href='{{url("/restrict/$page/$registro->id/edit")}}' 
-                                           data-toggle='tooltip' data-placement='top' title='Editar' class='btn blue-black-bg white'>
+                                           data-toggle='tooltip' data-placement='top' title='Editar' >
+                                           <button class="btn btn-success btn-sm" type="button">
                                             <i class="material-icons">build</i>
+                                           </button>
                                         </a>
-                                    </div>
                                 </td>
                             </tr>
                             @endforeach

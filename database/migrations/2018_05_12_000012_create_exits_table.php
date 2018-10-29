@@ -13,14 +13,14 @@ class CreateExitsTable extends Migration {
      */
     public function up() {
         Schema::create('exits', function (Blueprint $table) {
-            $table->increments('exi_codigo');
-            $table->integer('sto_codigo')->unsigned();
-            $table->foreign('sto_codigo')->references('sto_codigo')->on('stores')->onDelete('cascade');
-            $table->integer('con_codigo')->unsigned();
-            $table->foreign('con_codigo')->references('con_codigo')->on('conveyors')->onDelete('cascade');
-            $table->double('exi_total');
-            $table->double('exi_freight');
-            $table->double('exi_tax');
+            $table->increments('id');
+            $table->integer('store_id')->unsigned();
+            $table->foreign('store_id')->references('id')->on('stores')->onDelete('cascade');
+            $table->integer('conveyor_id')->unsigned();
+            $table->foreign('conveyor_id')->references('id')->on('conveyors')->onDelete('cascade');
+            $table->double('total');
+            $table->double('freight');
+            $table->double('tax');
             $table->timestamps();
             $table->softDeletes();
         });

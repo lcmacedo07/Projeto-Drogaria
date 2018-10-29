@@ -12,8 +12,8 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                @if( isset($data->sto_codigo) )
-                {!! Form::model($data, ['url' => "/restrict/$page/$data->sto_codigo", 'method' => 'PATCH',
+                @if( isset($data->id) )
+                {!! Form::model($data, ['url' => "/restrict/$page/$data->id", 'method' => 'PATCH',
                 'class' => 'form-horizontal', 'enctype'=>'multipart/form-data']) !!}
                 @else
                 {!! Form::open(['url' => route("$page.store"), 'method' => 'POST', 'class' => 'form-horizontal',
@@ -25,44 +25,44 @@
                         <div class='input-field col-md-3'>
                             <label class="bmd-label-floating">CODIGO DA CIDADE</label>
                             <div class="input-group">
-                                <select name='cit_codigo' class='form-control'>
+                                <select name='city_id' class='form-control'>
                                     @foreach($citys as $city)
                                     <option 
-                                        @if(isset($data->cit_codigo) && ($data->cit_codigo==$city->cit_codigo)) @php echo 'selected'; @endphp @endif 
-                                        value="{{$city->cit_codigo}}" >
-                                        {{$city->cit_city}}
+                                        @if(isset($data->city_id) && ($data->city_id==$city->id)) @php echo 'selected'; @endphp @endif 
+                                        value="{{$city->id}}" >
+                                        {{$city->city}}
                                 </option>
                                 @endforeach
                             </select>
-                            @if ($errors->has('cit_codigo'))
-                            <span class='text-danger'> {{ $errors->first('cit_codigo') }} </span>
+                            @if ($errors->has('city_id'))
+                            <span class='text-danger'> {{ $errors->first('city_id') }} </span>
                             @endif
                         </div>
                     </div>
                     <div class='input-field col-md-3'>
                         <label class="bmd-label-floating">NOME DA LOJA</label>
                         <div class="input-group">
-                            {!! Form::text('sto_name', null, ['required' => 'yes', 'min' => '5', 'maxlength' => '30','class' => 'form-control']) !!}
-                            @if ($errors->has('sto_name'))
-                            <span class='text-danger'> {{ $errors->first('sto_name') }} </span>
+                            {!! Form::text('name', null, ['required' => 'yes', 'min' => '5', 'maxlength' => '30','class' => 'form-control']) !!}
+                            @if ($errors->has('name'))
+                            <span class='text-danger'> {{ $errors->first('name') }} </span>
                             @endif
                         </div>
                     </div>
                     <div class='input-field col-md-3'>
                         <label class="bmd-label-floating">CNPJ</label>
                         <div class="input-group">
-                            {!! Form::text('sto_cnpj', null, ['data-mask' => '00.000.000/0000-00','required' => 'yes', 'min' => '10', 'maxlength' => '20','class' => 'form-control']) !!}
-                            @if ($errors->has('sto_cnpj'))
-                            <span class='text-danger'> {{ $errors->first('sto_cnpj') }} </span>
+                            {!! Form::text('cnpj', null, ['data-mask' => '00.000.000/0000-00','required' => 'yes', 'min' => '10', 'maxlength' => '20','class' => 'form-control']) !!}
+                            @if ($errors->has('cnpj'))
+                            <span class='text-danger'> {{ $errors->first('cnpj') }} </span>
                             @endif
                         </div>
                     </div>
                     <div class='input-field col-md-3'>
                         <label class="bmd-label-floating">ENDEREÇO</label>
                         <div class="input-group">
-                            {!! Form::text('sto_address', null, ['required' => 'yes', 'min' => '5', 'maxlength' => '200','class' => 'form-control']) !!}
-                            @if ($errors->has('sto_address'))
-                            <span class='text-danger'> {{ $errors->first('sto_address') }} </span>
+                            {!! Form::text('address', null, ['required' => 'yes', 'min' => '5', 'maxlength' => '200','class' => 'form-control']) !!}
+                            @if ($errors->has('address'))
+                            <span class='text-danger'> {{ $errors->first('address') }} </span>
                             @endif
                         </div>
                     </div>
@@ -71,66 +71,67 @@
                     <div class='input-field col-md-3'>
                         <label class="bmd-label-floating">UF</label>
                         <div class="input-group">
-                            {!! Form::text('sto_uf', null, ['data-mask' => 'AA', 'maxlength' => '2','class' => 'form-control']) !!}
-                            @if ($errors->has('sto_uf'))
-                            <span class='text-danger'> {{ $errors->first('sto_uf') }} </span>
+                            {!! Form::text('uf', null, ['data-mask' => 'AA', 'maxlength' => '2','class' => 'form-control']) !!}
+                            @if ($errors->has('uf'))
+                            <span class='text-danger'> {{ $errors->first('uf') }} </span>
                             @endif
                         </div>
                     </div>
                     <div class='input-field col-md-3'>
                         <label class="bmd-label-floating">TELEFONE</label>
                         <div class="input-group">
-                            {!! Form::text('sto_telephone', null, ['data-inputmask' => '(00)0000-0000','required' => 'yes', 'min' => '5', 'maxlength' => '14','class' => 'form-control']) !!}
-                            @if ($errors->has('sto_telephone'))
-                            <span class='text-danger'> {{ $errors->first('sto_telephone') }} </span>
+                            {!! Form::text('telephone', null, ['data-inputmask' => '(00)0000-0000','required' => 'yes', 'min' => '5', 'maxlength' => '14','class' => 'form-control']) !!}
+                            @if ($errors->has('telephone'))
+                            <span class='text-danger'> {{ $errors->first('telephone') }} </span>
                             @endif
                         </div>
                     </div>
                     <div class='input-field col-md-3'>
                         <label class="bmd-label-floating">CODIGO POSTAL</label>
-                        {!! Form::text('sto_zip_code', null,['data-mask' => '00000-000','required' => 'yes', 'min' => '5', 'maxlength' => '15','class' => 'form-control']) !!}
-                        @if ($errors->has('sto_zip_code'))
-                        <span class='text-danger'> {{ $errors->first('sto_zip_code') }} </span>
+                        {!! Form::text('zip_code', null,['data-mask' => '00000-000','required' => 'yes', 'min' => '5', 'maxlength' => '15','class' => 'form-control']) !!}
+                        @if ($errors->has('zip_code'))
+                        <span class='text-danger'> {{ $errors->first('zip_code') }} </span>
                         @endif
                     </div>
-                <div class='input-field col-md-3'>
-                    <label class="bmd-label-floating">INSC</label>
-                    <div class="input-group">
-                        {!! Form::text('sto_insc', null, ['required' => 'yes', 'min' => '5', 'maxlength' => '20','class' => 'form-control']) !!}
-                        @if ($errors->has('sto_insc'))
-                        <span class='text-danger'> {{ $errors->first('sto_insc') }} </span>
-                        @endif
+                    <div class='input-field col-md-3'>
+                        <label class="bmd-label-floating">INSC</label>
+                        <div class="input-group">
+                            {!! Form::text('insc', null, ['required' => 'yes', 'min' => '5', 'maxlength' => '20','class' => 'form-control']) !!}
+                            @if ($errors->has('insc'))
+                            <span class='text-danger'> {{ $errors->first('insc') }} </span>
+                            @endif
+                        </div>
+                    </div>
+                </div>    
+                <div class="row m-t-20">
+                    <div class='input-field col-md-6'>
+                        <label class="bmd-label-floating">NOME FANTASIA</label>
+                        <div class="input-group">
+                            {!! Form::text('fantasy_name', null, ['required' => 'yes', 'min' => '5', 'maxlength' => '200','class' => 'form-control']) !!}
+                            @if ($errors->has('fantasy_name'))
+                            <span class='text-danger'> {{ $errors->first('fantasy_name') }} </span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class='input-field col-md-6'>
+                        <label class="bmd-label-floating">RAZÃO SOCIAL</label>
+                        <div class="input-group">
+                            {!! Form::text('social_reason', null, ['required' => 'yes', 'min' => '5', 'maxlength' => '200','class' => 'form-control']) !!}
+                            @if ($errors->has('social_reason'))
+                            <span class='text-danger'> {{ $errors->first('social_reason') }} </span>
+                            @endif
+                        </div>
                     </div>
                 </div>
-            </div>    
-            <div class="row m-t-20">
-                <div class='input-field col-md-6'>
-                    <label class="bmd-label-floating">NOME FANTASIA</label>
-                    <div class="input-group">
-                        {!! Form::text('sto_fantasy_name', null, ['required' => 'yes', 'min' => '5', 'maxlength' => '200','class' => 'form-control']) !!}
-                        @if ($errors->has('sto_fantasy_name'))
-                        <span class='text-danger'> {{ $errors->first('sto_fantasy_name') }} </span>
-                        @endif
-                    </div>
+                <div class='btn-group'>
+                    <button type='reset' class='btn btn-default waves-effect'>Resetar</button>
+                    <button type='submit' class='btn btn-success waves-effect waves-light'>Salvar Dados</button>
                 </div>
-                <div class='input-field col-md-6'>
-                    <label class="bmd-label-floating">RAZÃO SOCIAL</label>
-                    <div class="input-group">
-                        {!! Form::text('sto_social_reason', null, ['required' => 'yes', 'min' => '5', 'maxlength' => '200','class' => 'form-control']) !!}
-                        @if ($errors->has('sto_social_reason'))
-                        <span class='text-danger'> {{ $errors->first('sto_social_reason') }} </span>
-                        @endif
-                    </div>
-                </div>
+                {!! Form::close() !!}
             </div>
-            <hr/>
-            <div class='btn-group'>
-                <button type='reset' class='btn btn-default waves-effect'>Resetar</button>
-                <button type='submit' class='btn btn-primary waves-effect waves-light'>Salvar Dados</button>
-            </div>
-            {!! Form::close() !!}
         </div>
     </div>
+</div>
 </div>
 
 @push('css')

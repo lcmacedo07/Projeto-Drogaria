@@ -10,15 +10,15 @@ class Citys extends Model {
     use SoftDeletes;
 
     protected $table = 'citys';
-    protected $primaryKey = 'cit_codigo';
+    protected $primaryKey = 'id';
     protected $fillable = [ 
-            'cit_city',
-            'cit_uf'
+            'city',
+            'uf'
                 ];
     
     public $rules = [
-        'cit_city' => 'required|max:30',
-        'cit_uf' => 'required|max:2',
+        'city' => 'required|max:30|unique:citys,city,((ID{?})),id',
+        'uf' => 'required|max:2|unique:citys,uf,((ID{?})),id',
     ];
 
 }

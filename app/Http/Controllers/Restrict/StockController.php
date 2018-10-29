@@ -27,11 +27,4 @@ class StockController extends StandardController {
         $this->gate = 'STOCKS';
     }
 
-    public function pdf() {
-        $data = $this->model->all();
-        $pdf = App::make('dompdf.wrapper');
-        $pdf->loadHTML(view("{$this->nomeView}.pdf", compact('data')));
-        return $pdf->stream();
-    }
-
 }

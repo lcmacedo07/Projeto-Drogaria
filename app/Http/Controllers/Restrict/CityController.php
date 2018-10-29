@@ -25,5 +25,6 @@ class CityController extends StandardController {
         $this->titulo = "CIDADES";
         $this->gate = 'CITYS';
     }
+
     
 }

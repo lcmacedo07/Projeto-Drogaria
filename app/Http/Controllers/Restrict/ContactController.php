@@ -5,25 +5,23 @@ namespace App\Http\Controllers\Restrict;
 use App\Models\Restrito\Contact;
 use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Restrict\StandardController;
 
-class ContactController extends Controller
-{
-    public function index()
-    {
-        $contacts = Contact::all();
-        return view('restrict.contact.index',compact('contacts'));
-    }
-    public function show($id)
-    {
-        $contact = Contact::find($id);
-        return view('restrict.contact.show',compact('contact'));
-    }
+class ContactController extends StandardController{
 
-    public function destroy($id)
-    {
-        Contact::find($id)->delete();
-        Toastr::success('Mensagem de Contato Deletada com Sucesso!','Success',["positionClass" => "toast-top-right"]);
-        return redirect()->back();
+    protected $model;
+    protected $request;
+    protected $page;
+    protected $gate;
+    protected $nomeView = 'restrict.contact';
+    protected $redirectIndex = '/restrict/contact';
+
+    public function __construct(Contact $model, Request $request) {
+        $this->model = $model;
+        $this->request = $request;
+        $this->page = "contact";
+        $this->titulo = "MENSAGEM";
+        $this->gate = 'CONTACT';
     }
+   
 }

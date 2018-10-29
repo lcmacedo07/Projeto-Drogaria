@@ -13,18 +13,18 @@ class CreateConveyorsTable extends Migration {
      */
     public function up() {
         Schema::create('conveyors', function (Blueprint $table) {
-            $table->increments('con_codigo');
-            $table->integer('cit_codigo')->unsigned();
-            $table->foreign('cit_codigo')->references('cit_codigo')->on('citys')->onDelete('cascade');
-            $table->string('con_conveyors', 200);
-            $table->string('con_address', 200);
-            $table->integer('con_num');
-            $table->string('con_neighborhood', 30);
-            $table->string('con_cep', 14);
-            $table->string('con_cnpj', 20);
-            $table->string('con_insc', 20)->nullable();
-            $table->string('con_contact', 14);
-            $table->string('con_telephone', 14);
+            $table->increments('id');
+            $table->integer('city_id')->unsigned();
+            $table->foreign('city_id')->references('id')->on('citys')->onDelete('cascade');
+            $table->string('conveyors', 200);
+            $table->string('address', 200);
+            $table->integer('num');
+            $table->string('neighborhood', 30);
+            $table->string('cep', 14);
+            $table->string('cnpj', 20);
+            $table->string('insc', 20)->nullable();
+            $table->string('contact', 14);
+            $table->string('telephone', 14);
             $table->timestamps();
             $table->softDeletes();
         });

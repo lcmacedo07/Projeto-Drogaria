@@ -13,18 +13,18 @@ class CreateStoresTable extends Migration {
      */
     public function up() {
         Schema::create('stores', function (Blueprint $table) {
-            $table->increments('sto_codigo');
-            $table->integer('cit_codigo')->unsigned();
-            $table->foreign('cit_codigo')->references('cit_codigo')->on('citys')->onDelete('cascade');
-            $table->string('sto_name', 30);
-            $table->string('sto_cnpj', 20);
-            $table->string('sto_address', 200);
-            $table->char('sto_uf', 2);
-            $table->string('sto_telephone', 14);
-            $table->string('sto_zip_code', 15);
-            $table->string('sto_social_reason', 200);
-            $table->string('sto_fantasy_name', 200);
-            $table->string('sto_insc', 20)->nullable();
+            $table->increments('id');
+            $table->integer('city_id')->unsigned();
+            $table->foreign('city_id')->references('id')->on('citys')->onDelete('cascade');
+            $table->string('name', 30);
+            $table->string('cnpj', 20);
+            $table->string('address', 200);
+            $table->char('uf', 2);
+            $table->string('telephone', 14);
+            $table->string('zip_code', 15);
+            $table->string('social_reason', 200);
+            $table->string('fantasy_name', 200);
+            $table->string('insc', 20)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -15,12 +15,17 @@ class StandardController extends BaseController {
         DispatchesJobs,
         ValidatesRequests;
 
+    protected $totalPorPagina = 4; 
+   
     public function index() {
         $gate = $this->gate;
         if (Gate::denies("$gate")) {
             abort(403, 'Não Autorizado!');
         }
-        $data = $this->model->all();
+        
+//        $data = $this->model->all();
+        $data = $this->model->paginate($this->totalPorPagina);
+        
         return view("{$this->nomeView}.index", compact('data'))
                         ->with('page', $this->page)
                         ->with('titulo', $this->titulo);
@@ -45,7 +50,7 @@ class StandardController extends BaseController {
         $validator = validator($dadosForm, $this->model->rules);
         
         if ($validator->fails()) {
-            Toastr::error('Houve um erro no registro. Corrija e tente novamente!', 'Errors :(')->autoclose(4500);
+            Toastr::error('Houve um erro no registro. Corrija e tente novamente!', 'Errors :(');
             return redirect()->back()
                             ->withErrors($validator)
                             ->withInput()
@@ -74,6 +79,8 @@ class StandardController extends BaseController {
     }
     
     public function update($id) {
+
+
         $gate = $this->gate;
         if (Gate::denies("$gate")) {
             abort(403, 'Não Autorizado!');
@@ -85,9 +92,16 @@ class StandardController extends BaseController {
 
         $validator = validator($dadosForm, $rulesTratada);
 
+        /*
+        if ($validator->fails()) {
+            $messages = $validator->messages();
+            return $messages;
+        }
+         */
+
         
         if ($validator->fails()) {
-            Toastr::error('Houve um erro no registro. Corrija e tente novamente!', 'Errors :(')->autoclose(4500);
+            Toastr::error('Houve um erro no registro. Corrija e tente novamente!', 'Errors :(');
             return redirect()->back()
                             ->withErrors($validator)
                             ->withInput()
@@ -117,7 +131,7 @@ class StandardController extends BaseController {
         if ($deleta) {
             return '1';
         } else {
-            Toastr::error('Pressione F5 e verifique se o arquivo continua na lista. Caso o erro persista, entre em contato com a Administração.', 'Errors :(')->autoclose(4500);
+            Toastr::error('Pressione F5 e verifique se o arquivo continua na lista. Caso o erro persista, entre em contato com a Administração.', 'Errors :(');
             return redirect("$this->redirectIndex")
                             ->with('page', $this->page)
                             ->with('titulo', $this->titulo);
@@ -150,11 +164,11 @@ class StandardController extends BaseController {
                             ->with('page', $this->page)
                             ->with('titulo', $this->titulo);
         } else {
-            Toastr::error('Pressione F5 e verifique se o arquivo continua na lista. Caso o erro persista, entre em contato com a Administração.', 'Errors :(')->autoclose(4500);
+            Toastr::error('Pressione F5 e verifique se o arquivo continua na lista. Caso o erro persista, entre em contato com a Administração.', 'Errors :(');
             return redirect("$this->redirectIndex")
                             ->with('page', $this->page)
                             ->with('titulo', $this->titulo);
         }
      }
-
+     
 }

@@ -182,6 +182,20 @@ class Permissions extends Seeder
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s'),
                 ],
+                    [
+                    'id' => 25,
+                    'name' => 'CONTACT',
+                    'label' => 'PERMISSÃO PARA VER AS MENSAGENS',
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s'),
+                ],
+                    [
+                    'id' => 26,
+                    'name' => 'DASHBOARD',
+                    'label' => 'PERMISSÃO PARA VER O PAINEL ADMINISTRATIVO',
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s'),
+                ],
                 
             ]);
         } else {

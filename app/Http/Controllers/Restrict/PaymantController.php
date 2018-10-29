@@ -29,8 +29,6 @@ class PaymantController extends StandardController {
         $this->gate = 'PAYMANTS';
     }
 
-//    paymantsTypes
-
 
     public function create() {
         $gate = $this->gate;
@@ -56,12 +54,6 @@ class PaymantController extends StandardController {
                         ->with('titulo', $this->titulo);
     }
     
-     public function pdf() {
-        $data = $this->model->all();
-        $pdf = App::make('dompdf.wrapper');
-        $pdf->loadHTML(view("{$this->nomeView}.pdf", compact('data')));
-        return $pdf->stream();
-    }
 
 }
 

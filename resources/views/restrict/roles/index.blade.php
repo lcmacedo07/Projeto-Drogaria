@@ -8,16 +8,20 @@
     </ol>
 </nav>
 
+<nav>
+    {{ $data->links() }}
+</nav>
+
 <div class="col-md-12">
     <div class="card card-plain">
         <div class="box-body">
-            <a href='{{url("/restrict/$page/create")}}' class='btn btn-primary white m-b-15'> Novo Registro</a>
+            <a href='{{url("/restrict/$page/create")}}' class='btn btn-success white m-b-15'> Novo Registro</a>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead class="">
                             <tr>
-                                <th>id</th>
+                                <th>ID</th>
                                 <th>NAME</th>
                                 <th>LABEL</th>
                                 <th width='115px'>#</th>
@@ -30,14 +34,19 @@
                                 <td> {{ $registro->name }} </td>
                                 <td> {{ $registro->label }} </td>
                                 <td>
-                                    <a href='{{url("/restrict/$page/$registro->id/deletar")}}' 
-                                       onClick="return confirm('Você quer mesm->->/o deletar?')" 
-                                       class='btn blue-black-bg white' data-toggle='tooltip' data-placement='top' title='Delete'>
-                                        <i class="material-icons">delete</i>
-                                    </a>
-                                    <a href='{{url("/restrict/$page/edit/$registro->id")}}' class='btn blue-black-bg btn-xs white'>
-                                        <i class="material-icons">build</i>
-                                    </a>
+                                <a href='{{url("/restrict/$page/$registro->id/deletar")}}' 
+                                           onClick="return confirm('Você quer mesmo deletar?')" 
+                                            data-toggle='tooltip' data-placement='top' title='Deletar'>
+                                            <button class="btn btn-danger btn-sm" type="button">
+                                                <i class="material-icons">delete</i>
+                                            </button>
+                                        </a>
+                                        <a href='{{url("/restrict/$page/$registro->id/edit")}}' 
+                                           data-toggle='tooltip' data-placement='top' title='Editar' >
+                                           <button class="btn btn-success btn-sm" type="button">
+                                            <i class="material-icons">build</i>
+                                           </button>
+                                        </a>
                                 </td>
                             </tr>
                             @endforeach

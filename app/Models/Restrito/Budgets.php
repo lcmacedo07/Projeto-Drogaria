@@ -10,23 +10,23 @@ class Budgets extends Model {
     use SoftDeletes;
 
     protected $table = 'budgets';
-    protected $primaryKey = 'bud_codigo';
+    protected $primaryKey = 'id';
     protected $fillable = [
         'user_id',
-        'bud_validateproposal',
-        'bud_conditionspayments',
-        'bud_qtdpayments',
-        'bud_discount',
-        'bud_value',
-        'bud_status',
+        'validateproposal',
+        'conditionspayments',
+        'qtdpayments',
+        'discount',
+        'value',
+        'status',
     ];
     public $rules = [
         'user_id' => 'required|numeric',
-        'bud_validateproposal' => 'required|numeric',
-        'bud_conditionspayments' => 'required|max:30',
-        'bud_qtdpayments' => 'required|numeric',
-        'bud_discount' => 'numeric',
-        'bud_value' => 'numeric',
-        'bud_status' => 'required|max:30',
+        'validateproposal' => 'required|numeric',
+        'conditionspayments' => 'required|max:30',
+        'qtdpayments' => 'required|numeric',
+        'discount' => 'numeric',
+        'value' => 'numeric',
+        'status' => 'required|max:30',
     ];
 }

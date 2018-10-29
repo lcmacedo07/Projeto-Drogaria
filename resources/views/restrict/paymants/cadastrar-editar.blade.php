@@ -12,8 +12,8 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                @if(isset($data->pay_codigo))
-                {!! Form::model($data, ['url' => "/restrict/$page/$data->pay_codigo", 'method' => 'PATCH',
+                @if(isset($data->id))
+                {!! Form::model($data, ['url' => "/restrict/$page/$data->id", 'method' => 'PATCH',
                 'class' => 'form-horizontal', 'enctype'=>'multipart/form-data']) !!}
                 @else
                 {!! Form::open(['url' => route("$page.store"), 'method' => 'POST', 'class' => 'form-horizontal',
@@ -26,35 +26,35 @@
                             <label>CODIGO DO TIPOS DE PAGAMENTOS</label>
                             <div class="input-group">
 
-                                <select name='pt_codigo' class='form-control'>
+                                <select name='paymants_type_id' class='form-control'>
                                     @foreach($paymantsTypes as $paymantsTypes)
                                     <option 
-                                        @if(isset($data->pt_codigo) && ($data->pt_codigo==$paymantsTypes->pt_codigo)) @php echo 'selected'; @endphp @endif 
-                                        value="{{$paymantsTypes->pt_codigo}}" >
-                                        {{$paymantsTypes->pt_description}}
+                                        @if(isset($data->paymants_type_id) && ($data->paymants_type_id==$paymantsTypes->id)) @php echo 'selected'; @endphp @endif 
+                                        value="{{$paymantsTypes->id}}" >
+                                        {{$paymantsTypes->description}}
                                 </option>
                                 @endforeach
                             </select>
-                            @if ($errors->has('pt_codigo'))
-                            <span class='text-danger'> {{ $errors->first('pt_codigo') }} </span>
+                            @if ($errors->has('paymats_type_id'))
+                            <span class='text-danger'> {{ $errors->first('paymats_type_id') }} </span>
                             @endif
                         </div>
                     </div>
                     <div class='input-field col-md-4'>
                         <label>DATA DO LANCAMENTO</label>
                         <div class="input-group">
-                            {!! Form::date('pay_datelaunch', null, ['required' => 'yes', 'placeholder' => 'Insira a Data do Lancamento', 'class' => 'form-control']) !!}
-                            @if ($errors->has('pay_datelaunch'))
-                            <span class='text-danger'> {{ $errors->first('pay_datelaunch') }} </span>
+                            {!! Form::date('datelaunch', null, ['required' => 'yes', 'placeholder' => 'Insira a Data do Lancamento', 'class' => 'form-control']) !!}
+                            @if ($errors->has('datelaunch'))
+                            <span class='text-danger'> {{ $errors->first('datelaunch') }} </span>
                             @endif
                         </div>
                     </div>
                     <div class='input-field col-md-4'>
                         <label>DATA DO VENCIMENTO</label>
                         <div class="input-group">
-                            {!! Form::date('pay_datematurity', null, ['required' => 'yes', 'min' => '5', 'placeholder' => 'Insira a Data do Vencimento','class' => 'form-control']) !!}
-                            @if ($errors->has('pay_datematurity'))
-                            <span class='text-danger'> {{ $errors->first('pay_datematurity') }} </span>
+                            {!! Form::date('datematurity', null, ['required' => 'yes', 'min' => '5', 'placeholder' => 'Insira a Data do Vencimento','class' => 'form-control']) !!}
+                            @if ($errors->has('datematurity'))
+                            <span class='text-danger'> {{ $errors->first('datematurity') }} </span>
                             @endif
                         </div>
                     </div>
@@ -64,26 +64,26 @@
                     <div class='input-field col-md-4'>
                         <label>DATA DO PAGAMENTO</label>
                         <div class="input-group">
-                            {!! Form::date('pay_datepayment', null, ['required' => 'pay_datepayment', 'min' => '5','placeholder' => 'Insira a Data do Pagamento', 'class' => 'form-control']) !!}
-                            @if ($errors->has('pay_datepayment'))
-                            <span class='text-danger'> {{ $errors->first('pay_datepayment') }} </span>
+                            {!! Form::date('datepayment', null, ['required' => 'datepayment', 'min' => '5','placeholder' => 'Insira a Data do Pagamento', 'class' => 'form-control']) !!}
+                            @if ($errors->has('datepayment'))
+                            <span class='text-danger'> {{ $errors->first('datepayment') }} </span>
                             @endif
                         </div>
                     </div>
                     <div class='input-field col-md-4'>
                         <label>VALOR</label>
                         <div class="input-group">
-                            {!! Form::number('pay_value', null, ['required' => 'yes','placeholder' => 'Insira o Valor', 'class' => 'form-control']) !!}
-                            @if ($errors->has('pay_value'))
-                            <span class='text-danger'> {{ $errors->first('pay_value') }} </span>
+                            {!! Form::number('value', null, ['required' => 'yes','placeholder' => 'Insira o Valor', 'class' => 'form-control']) !!}
+                            @if ($errors->has('value'))
+                            <span class='text-danger'> {{ $errors->first('value') }} </span>
                             @endif
                         </div>
                     </div>
                     <div class='input-field col-md-4'>
                         <label>COMPLEMENTO</label>
-                        {!! Form::text('pay_complements', null, ['required' => 'yes', 'min' => '5', 'maxlength' => '200', 'placeholder' => 'Insira o Complemento', 'class' => 'form-control']) !!}
-                        @if ($errors->has('pay_complements'))
-                        <span class='text-danger'> {{ $errors->first('pay_complements') }} </span>
+                        {!! Form::text('complements', null, ['required' => 'yes', 'min' => '5', 'maxlength' => '200', 'placeholder' => 'Insira o Complemento', 'class' => 'form-control']) !!}
+                        @if ($errors->has('complements'))
+                        <span class='text-danger'> {{ $errors->first('complements') }} </span>
                         @endif
                     </div>
 
@@ -91,7 +91,7 @@
                 <hr/>
                 <div class='btn-group'>
                     <button type='reset' class='btn btn-default waves-effect'>Resetar</button>
-                    <button type='submit' class='btn btn-primary waves-effect waves-light'>Salvar Dados</button>
+                    <button type='submit' class='btn btn-success waves-effect waves-light'>Salvar Dados</button>
                 </div>
                 {!! Form::close() !!}
             </div>

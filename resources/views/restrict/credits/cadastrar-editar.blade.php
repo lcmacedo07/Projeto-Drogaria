@@ -12,8 +12,8 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                @if(isset($data->cred_codigo))
-                {!! Form::model($data, ['url' => "/restrict/$page/$data->cred_codigo", 'method' => 'PATCH',
+                @if(isset($data->id))
+                {!! Form::model($data, ['url' => "/restrict/$page/$data->id", 'method' => 'PATCH',
                 'class' => 'form-horizontal', 'enctype'=>'multipart/form-data']) !!}
                 @else
                 {!! Form::open(['url' => route("$page.store"), 'method' => 'POST', 'class' => 'form-horizontal',
@@ -24,39 +24,39 @@
                     <div class='row'>
                         <div class='input-field col-md-5'>
                             <label>CODIGO DO TIPOS DE CREDITOS</label>
-                            <select name='ct_codigo' class='form-control'>
+                            <select name='credits_type_id' class='form-control'>
                                 @foreach($creditsTypes as $creditsType)
                                 <option 
-                                    @if(isset($data->ct_codigo) && ($data->ct_codigo==$creditsType->ct_codigo)) @php echo 'selected'; @endphp @endif 
-                                    value="{{$creditsType->ct_codigo}}" >
-                                    {{$creditsType->ct_descriptions}}
+                                    @if(isset($data->credits_type_id) && ($data->credits_type_id==$creditsType->id)) @php echo 'selected'; @endphp @endif 
+                                    value="{{$creditsType->id}}" >
+                                    {{$creditsType->descriptions}}
                             </option>
                             @endforeach
                         </select>
-                        @if ($errors->has('ct_codigo'))
-                        <span class='text-danger'> {{ $errors->first('ct_codigo') }} </span>
+                        @if ($errors->has('credits_type_id'))
+                        <span class='text-danger'> {{ $errors->first('credits_type_id') }} </span>
                         @endif
                     </div>
                     <div class='input-field col-md-5'>
                         <label>CODIGO DO ORÇAMENTOS</label>
-                        <select name='bud_codigo' class='form-control'>
+                        <select name='budget_id' class='form-control'>
                             @foreach($budgets as $budget)
                             <option 
-                                @if(isset($data->bud_codigo) && ($data->bud_codigo==$budget->bud_codigo)) @php echo 'selected'; @endphp @endif 
-                                value="{{$budget->bud_codigo}}" >
-                                {{$budget->bud_codigo}}
+                                @if(isset($data->budget_id) && ($data->budget_id==$budget->id)) @php echo 'selected'; @endphp @endif 
+                                value="{{$budget->id}}" >
+                                {{$budget->id}}
                         </option>
                         @endforeach
                     </select>
-                    @if ($errors->has('bud_codigo'))
-                    <span class='text-danger'> {{ $errors->first('bud_codigo') }} </span>
+                    @if ($errors->has('budget_id'))
+                    <span class='text-danger'> {{ $errors->first('budget_id') }} </span>
                     @endif
                 </div>
                 <div class='input-field col-md-2'>
                     <label>REFERÊNCIA</label>
-                    {!! Form::date('cred_datereferencies', null, ['maxlength' => '20','class' => 'form-control']) !!}
-                    @if ($errors->has('cred_datereferencies'))
-                    <span class='text-danger'> {{ $errors->first('cred_datereferencies') }} </span>
+                    {!! Form::date('datereferencies', null, ['maxlength' => '20','class' => 'form-control']) !!}
+                    @if ($errors->has('datereferencies'))
+                    <span class='text-danger'> {{ $errors->first('datereferencies') }} </span>
                     @endif
                 </div>
             </div>
@@ -64,80 +64,81 @@
             <div class='row m-t-20'>
                 <div class='input-field col-md-4'>
                     <label>DATA DO LANCAMENTO</label>
-                    {!! Form::date('cred_datelaunch', null, ['maxlength' => '20','class' => 'form-control']) !!}
-                    @if ($errors->has('cred_datelaunch'))
-                    <span class='text-danger'> {{ $errors->first('cred_datelaunch') }} </span>
+                    {!! Form::date('datelaunch', null, ['maxlength' => '20','class' => 'form-control']) !!}
+                    @if ($errors->has('datelaunch'))
+                    <span class='text-danger'> {{ $errors->first('datelaunch') }} </span>
                     @endif
                 </div>
                 <div class='input-field col-md-4'>
                     <label>DATA DO VENCIMENTO</label>
-                    {!! Form::date('cred_datematurity', null, ['maxlength' => '20','class' => 'form-control']) !!}
-                    @if ($errors->has('cred_datematurity'))
-                    <span class='text-danger'> {{ $errors->first('cred_datematurity') }} </span>
+                    {!! Form::date('datematurity', null, ['maxlength' => '20','class' => 'form-control']) !!}
+                    @if ($errors->has('datematurity'))
+                    <span class='text-danger'> {{ $errors->first('datematurity') }} </span>
                     @endif
                 </div>
                 <div class='input-field col-md-4'>
                     <label>DATA DO RECEBIMENTO</label>
-                    {!! Form::date('cred_datereceipt', null, ['maxlength' => '20','class' => 'form-control']) !!}
-                    @if ($errors->has('cred_datereceipt'))
-                    <span class='text-danger'> {{ $errors->first('cred_datereceipt') }} </span>
+                    {!! Form::date('datereceipt', null, ['maxlength' => '20','class' => 'form-control']) !!}
+                    @if ($errors->has('datereceipt'))
+                    <span class='text-danger'> {{ $errors->first('datereceipt') }} </span>
                     @endif
                 </div>
             </div> 
             <div class='row m-t-20'>
                 <div class='input-field col-md-6'>
                     <label>VALOR</label>
-                    {!! Form::text('cred_value', null, ['data-mask' => '000.000.000.000.000,00' , 'maxlength' => '20','class' => 'form-control']) !!}
-                    @if ($errors->has('cred_value'))
-                    <span class='text-danger'> {{ $errors->first('cred_value') }} </span>
+                    {!! Form::text('value', null, ['data-mask' => '000.000.000.000.000,00' , 'maxlength' => '20','class' => 'form-control']) !!}
+                    @if ($errors->has('value'))
+                    <span class='text-danger'> {{ $errors->first('value') }} </span>
                     @endif
                 </div>
                 <div class='input-field col-md-6'>
                     <label>VALOR RECEBIDO</label>
-                    {!! Form::text('cred_valuereceipt', null, ['data-mask' => '000.000.000.000.000,00' , 'maxlength' => '20','class' => 'form-control']) !!}
-                    @if ($errors->has('cred_valuereceipt'))
-                    <span class='text-danger'> {{ $errors->first('cred_valuereceipt') }} </span>
+                    {!! Form::text('valuereceipt', null, ['data-mask' => '000.000.000.000.000,00' , 'maxlength' => '20','class' => 'form-control']) !!}
+                    @if ($errors->has('valuereceipt'))
+                    <span class='text-danger'> {{ $errors->first('valuereceipt') }} </span>
                     @endif
                 </div>
             </div> 
             <div class='row m-t-20'>
                 <div class='input-field col-md-6'>
                     <label>NUMERO DO DOCUMENTO</label>
-                    {!! Form::text('cred_documentnumber', null, ['maxlength' => '20','class' => 'form-control']) !!}
-                    @if ($errors->has('cred_documentnumber'))
-                    <span class='text-danger'> {{ $errors->first('cred_documentnumber') }} </span>
+                    {!! Form::text('documentnumber', null, ['maxlength' => '20','class' => 'form-control']) !!}
+                    @if ($errors->has('documentnumber'))
+                    <span class='text-danger'> {{ $errors->first('documentnumber') }} </span>
                     @endif
                 </div>
                 <div class='input-field col-md-6'>
                     <label>NOSSO NUMERO</label>
-                    {!! Form::text('cred_ournumber', null, ['maxlength' => '25','class' => 'form-control']) !!}
-                    @if ($errors->has('cred_ournumber'))
-                    <span class='text-danger'> {{ $errors->first('cred_ournumber') }} </span>
+                    {!! Form::text('ournumber', null, ['maxlength' => '25','class' => 'form-control']) !!}
+                    @if ($errors->has('ournumber'))
+                    <span class='text-danger'> {{ $errors->first('ournumber') }} </span>
                     @endif
                 </div>
                 <div class='input-field col-md-6'>
                     <label>STATUS</label>
-                    {!! Form::text('cred_status', null, ['maxlength' => '50', 'class' => 'form-control']) !!}
-                    @if ($errors->has('cred_status'))
-                    <span class='text-danger'> {{ $errors->first('cred_status') }} </span>
+                    {!! Form::text('status', null, ['maxlength' => '50', 'class' => 'form-control']) !!}
+                    @if ($errors->has('status'))
+                    <span class='text-danger'> {{ $errors->first('status') }} </span>
                     @endif
                 </div>
                 <div class='input-field col-md-6'>
                     <label>COMPLEMENTO</label>
-                    {!! Form::text('cred_complements', null, ['maxlength' => '200','class' => 'form-control']) !!}
-                    @if ($errors->has('cred_complements'))
-                    <span class='text-danger'> {{ $errors->first('cred_complements') }} </span>
+                    {!! Form::text('complements', null, ['maxlength' => '200','class' => 'form-control']) !!}
+                    @if ($errors->has('complements'))
+                    <span class='text-danger'> {{ $errors->first('complements') }} </span>
                     @endif
                 </div>
             </div>
-            <hr/>
             <div class='btn-group'>
                 <button type='reset' class='btn btn-default waves-effect'>Resetar</button>
-                <button type='submit' class='btn btn-primary waves-effect waves-light'>Salvar Dados</button>
+                <button type='submit' class='btn btn-success waves-effect waves-light'>Salvar Dados</button>
             </div>
             {!! Form::close() !!}
         </div>
     </div>
+</div>
+</div>
 </div>
 
 @push('css')

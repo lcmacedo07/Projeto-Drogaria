@@ -10,32 +10,32 @@ class Providers extends Model {
     use SoftDeletes;
 
     protected $table = 'providers';
-    protected $primaryKey = 'pro_codigo';
+    protected $primaryKey = 'id';
     protected $fillable = [ 
-            'cit_codigo',
-            'pro_provider',
-            'pro_address',
-            'pro_num',
-            'pro_neighborhood',
-            'pro_zip_code',
-            'pro_contact',
-            'pro_cnpj',
-            'pro_insc',
-            'pro_telephone',
+            'city_id',
+            'provider',
+            'address',
+            'num',
+            'neighborhood',
+            'zip_code',
+            'contact',
+            'cnpj',
+            'insc',
+            'telephone',
         
                 ];
     
     public $rules = [
-        'cit_codigo' => 'required|numeric',
-        'pro_provider' => 'required|max:200',
-        'pro_address' => 'required|max:60',
-        'pro_num' => 'required|numeric',
-        'pro_neighborhood' => 'required|max:40',
-        'pro_zip_code' => 'required|max:14',
-        'pro_contact' => 'required|max:50',
-        'pro_cnpj' => 'required|max:20',
-        'pro_insc' => 'required|max:120',
-        'pro_telephone' => 'required|max:14',
+        'city_id' => 'required|numeric',
+        'provider' => 'required|max:200',
+        'address' => 'required|max:60',
+        'num' => 'required|numeric',
+        'neighborhood' => 'required|max:40',
+        'zip_code' => 'required|max:14|unique:providers,zip_code,((ID{?})),id',
+        'contact' => 'required|max:50',
+        'cnpj' => 'required|max:20|unique:providers,cnpj,((ID{?})),id',
+        'insc' => 'required|max:120|unique:providers,insc,((ID{?})),id',
+        'telephone' => 'required|max:14|unique:providers,telephone,((ID{?})),id',
     ];
 
 }

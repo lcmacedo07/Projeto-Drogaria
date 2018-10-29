@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Restrict;
 
 use App\Http\Controllers\Restrict\StandardController;
+use Illuminate\Http\Request;
 use App\User;
 use App\Models\Restrito\Citys;
 use App\Models\Restrito\Conveyors;
@@ -11,6 +12,8 @@ use App\Models\Restrito\Providers;
 use App\Models\Restrito\Categorys;
 use App\Models\Restrito\Purchases;
 use App\Models\Restrito\Sales;
+use App\Models\Restrito\Contact;
+use Gate;
 
 class RestritoController extends StandardController {
 
@@ -22,55 +25,44 @@ class RestritoController extends StandardController {
     protected $categorys;
     protected $purchases;
     protected $sales;
+    protected $contacts;
     protected $nomeView = 'restrict._home_';
     protected $gate;
     protected $page;
+    
+    public function __construct(Products $model,Request $request,User $user, Citys $citys,
+            Conveyors $conveyors,Providers $providers, Categorys $categorys,
+            Purchases $purchases,Sales $sales, Contact $contacts) {
+        
+        $this->model = $model;
+        $this->request = $request;
+        $this->titulo = "DASHBOARD";
+        $this->gate = 'DASHBOARD';
 
-    public function __construct(User $user, Citys $citys, Conveyors $conveyors,
-            Products $products, Providers $providers, Categorys $categorys,Purchases $purchases,Sales $sales) {
-        $this->model = $user;
-        $this->citys = $citys;
-        $this->conveyors = $conveyors;
-        $this->products = $products;
-        $this->providers = $providers;
-        $this->categorys = $categorys;
-        $this->purchases = $purchases;
-        $this->sales = $sales;
-        $this->page = 'home';
-        $this->titulo = 'e-Jornal';
-        $this->middleware('auth');
-        $this->gate = '';
     }
+    
     public function index() {
-        $citys = $this->citys->all();
-        $conveyors = $this->conveyors->all();
-        $products = $this->products->all();
-        $providers = $this->providers->all();
-        $categorys = $this->categorys->all();
-        $user = $this->model->all();
-        $purchases = $this->purchases->all();
-        $sales = $this->sales->all();
+        $gate = $this->gate;
+        if (Gate::denies("$gate")) {
+            abort(403, 'Não Autorizado!');
+        }
+        $data = $this->model->all();
         
-        $quantidade1 = count($citys);
-        $quantidade2 = count($conveyors);
-        $quantidade3 = count($products);
-        $quantidade4 = count($providers);
-        $quantidade5 = count($categorys);
-        $quantidade6 = count($user);
-        $quantidade7 = count($purchases);
-        $quantidade8 = count($sales);
+        $citys = Citys::all()->count();
+        $conveyors = Conveyors::all()->count();
+        $providers = Providers::all()->count();
+        $categorys = Categorys::all()->count();
+        $user = User::all()->count();
+        $purchases = Purchases::all()->count();
+        $sales = Sales::all()->count();
+        $contacts = Contact::all()->count();
         
-        return view("{$this->nomeView}.index")
-                        ->with('page', $this->page)
-                        ->with('titulo', $this->titulo)
-                        ->with('citys', $quantidade1)
-                        ->with('conveyors', $quantidade2)
-                        ->with('products', $quantidade3)
-                        ->with('providers', $quantidade4)
-                        ->with('categorys', $quantidade5)
-                        ->with('user', $quantidade6)
-                        ->with('purchases', $quantidade7)
-                        ->with('sales', $quantidade8);
+        return view("{$this->nomeView}.index", compact('data','citys','conveyors',
+                                                        'providers','categorys','user',
+                                                        'purchases','sales','contacts'))
+                                                         ->with('page', $this->page)
+                                                         ->with('titulo', $this->titulo);
     }
+    
 
 }

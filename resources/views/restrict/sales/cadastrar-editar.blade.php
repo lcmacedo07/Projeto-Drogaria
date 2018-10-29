@@ -12,8 +12,8 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                @if(isset($data->sal_codigo))
-                {!! Form::model($data, ['url' => "/restrict/$page/$data->sal_codigo", 'method' => 'PATCH',
+                @if(isset($data->id))
+                {!! Form::model($data, ['url' => "/restrict/$page/$data->id", 'method' => 'PATCH',
                 'class' => 'form-horizontal', 'enctype'=>'multipart/form-data']) !!}
                 @else
                 {!! Form::open(['url' => route("$page.store"), 'method' => 'POST', 'class' => 'form-horizontal',
@@ -25,59 +25,58 @@
                         <div class='input-field col-md-3'>
                             <label>DATA DA VENDA</label>
                             <div class="input-group">
-                                {!! Form::date('sal_date', null, ['required' => 'yes', 'min' => '5','class' => 'form-control']) !!}
-                                @if ($errors->has('sal_date'))
-                                <span class='text-danger'> {{ $errors->first('sal_date') }} </span>
+                                {!! Form::date('date', null, ['required' => 'yes', 'min' => '5','class' => 'form-control']) !!}
+                                @if ($errors->has('date'))
+                                <span class='text-danger'> {{ $errors->first('date') }} </span>
                                 @endif
                             </div>
                         </div>
                         <div class='input-field col-md-3'>
                             <label>QUANTIDADE DE VENDA</label>
                             <div class="input-group">
-                                {!! Form::number('sal_amount', null, ['required' => 'yes', 'min' => '5','class' => 'form-control']) !!}
-                                @if ($errors->has('sal_amount'))
-                                <span class='text-danger'> {{ $errors->first('sal_amount') }} </span>
+                                {!! Form::number('amount', null, ['required' => 'yes', 'min' => '5','class' => 'form-control']) !!}
+                                @if ($errors->has('amount'))
+                                <span class='text-danger'> {{ $errors->first('amount') }} </span>
                                 @endif
                             </div>
                         </div>
                         <div class='input-field col-md-3'>
                             <label>PREÇO DA VENDA</label>
                             <div class="input-group">
-                                {!! Form::number('sal_exit_price', null, ['required' => 'yes', 'min' => '1',  'class' => 'form-control']) !!}
-                                @if ($errors->has('sal_exit_price'))
-                                <span class='text-danger'> {{ $errors->first('sal_exit_price') }} </span>
+                                {!! Form::number('exit_price', null, ['required' => 'yes', 'min' => '1',  'class' => 'form-control']) !!}
+                                @if ($errors->has('exit_price'))
+                                <span class='text-danger'> {{ $errors->first('exit_price') }} </span>
                                 @endif
                             </div>
                         </div>
                         <div class='input-field col-md-3'>
                             <label>PREÇO DE CUSTO</label>
                             <div class="input-group">
-                                {!! Form::number('sal_cost_price', null, ['required' => 'yes', 'min' => '1', 'class' => 'form-control']) !!}
-                                @if ($errors->has('sal_cost_price'))
-                                <span class='text-danger'> {{ $errors->first('sal_cost_price') }} </span>
+                                {!! Form::number('cost_price', null, ['required' => 'yes', 'min' => '1', 'class' => 'form-control']) !!}
+                                @if ($errors->has('cost_price'))
+                                <span class='text-danger'> {{ $errors->first('cost_price') }} </span>
                                 @endif
                             </div>
                         </div>
                     </div>    
-                    <hr/>
                     <div class='btn-group'>
                         <button type='reset' class='btn btn-default waves-effect'>Resetar</button>
-                        <button type='submit' class='btn btn-primary waves-effect waves-light'>Salvar Dados</button>
+                        <button type='submit' class='btn btn-success waves-effect waves-light'>Salvar Dados</button>
                     </div>
                     {!! Form::close() !!}
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
-        @push('css')
-        <link rel='stylesheet' href='{{asset('bower_components/bootstrap-select/dist/css/bootstrap-select.css')}}'/>
-        @endpush
+@push('css')
+@endpush
 
-        @push('js-topo')
-        @endpush
+@push('js-topo')
+@endpush
 
-        @push('js')
-        <script src="{{asset('bower_components/bootstrap-select/dist/js/bootstrap-select.js')}}"></script>
-        @endpush
-        
-        @endsection
+@push('js')
+@endpush
+
+@endsection

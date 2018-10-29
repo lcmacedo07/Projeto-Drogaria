@@ -13,15 +13,15 @@ class CreateProductsTable extends Migration {
      */
     public function up() {
         Schema::create('products', function (Blueprint $table) {
-            $table->increments('prod_codigo');
-            $table->integer('cat_codigo')->unsigned();
-            $table->foreign('cat_codigo')->references('cat_codigo')->on('categorys')->onDelete('cascade');
-            $table->integer('pro_codigo')->unsigned();
-            $table->foreign('pro_codigo')->references('pro_codigo')->on('providers')->onDelete('cascade');
-            $table->string('prod_description',1000);
-            $table->double('prod_weight');
-            $table->string('prod_controlled');
-            $table->integer('prod_determined_amount');
+            $table->increments('id');
+            $table->integer('category_id')->unsigned();
+            $table->foreign('category_id')->references('id')->on('categorys')->onDelete('cascade');
+            $table->integer('provider_id')->unsigned();
+            $table->foreign('provider_id')->references('id')->on('providers')->onDelete('cascade');
+            $table->string('description',1000);
+            $table->double('weight');
+            $table->string('controlled');
+            $table->integer('determined_amount');
             $table->timestamps();
             $table->softDeletes();
         });

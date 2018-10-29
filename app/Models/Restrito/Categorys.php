@@ -10,13 +10,13 @@ class Categorys extends Model {
     use SoftDeletes;
 
     protected $table = 'categorys';
-    protected $primaryKey = 'cat_codigo';
+    protected $primaryKey = 'id';
     protected $fillable = [ 
-            'cat_category'
+            'category'
                 ];
     
     public $rules = [
-        'cat_category' => 'required|max:250',
+        'category' => 'required|max:250|unique:categorys,category,((ID{?})),id',
     ];
 
 }

@@ -8,12 +8,11 @@ class CreateSalesTable extends Migration {
 
     public function up() {
         Schema::create('sales', function (Blueprint $table) {
-            $table->increments('sal_codigo');
-            $table->date('sal_date');
-            $table->double('sal_amount');
-            $table->double('sal_exit_price');
-            $table->double('sal_cost_price');
-            /* USAR EM TODAS */
+            $table->increments('id');
+            $table->date('date');
+            $table->double('amount');
+            $table->double('exit_price');
+            $table->double('cost_price');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -10,31 +10,31 @@ class Conveyors extends Model {
     use SoftDeletes;
 
     protected $table = 'conveyors';
-    protected $primaryKey = 'con_codigo';
+    protected $primaryKey = 'id';
     protected $fillable = [ 
-            'cit_codigo',
-            'con_conveyors',
-            'con_address',
-            'con_num',
-            'con_neighborhood',
-            'con_cep',
-            'con_cnpj',
-            'con_insc',
-            'con_contact',
-            'con_telephone',
+            'city_id',
+            'conveyors',
+            'address',
+            'num',
+            'neighborhood',
+            'cep',
+            'cnpj',
+            'insc',
+            'contact',
+            'telephone',
                 ];
     
     public $rules = [
-        'cit_codigo' => 'required|numeric',
-        'con_conveyors' => 'required|max:200',
-        'con_address' => 'required|max:200',
-        'con_num' => 'required|numeric',
-        'con_neighborhood' => 'required|max:30',
-        'con_cep' => 'required|max:14',
-        'con_cnpj' => 'required|max:20',
-        'con_insc' => 'required|max:20',
-        'con_contact' => 'required|max:14',
-        'con_telephone' => 'required|max:14',
+        'city_id' => 'required|numeric',
+        'conveyors' => 'required|max:200|unique:conveyors,conveyors,((ID{?})),id',
+        'address' => 'required|max:200',
+        'num' => 'required|numeric',
+        'neighborhood' => 'required|max:30',
+        'cep' => 'required|max:14',
+        'cnpj' => 'required|max:20|unique:conveyors,cnpj,((ID{?})),id',
+        'insc' => 'required|max:20|unique:conveyors,insc,((ID{?})),id',
+        'contact' => 'required|max:14',
+        'telephone' => 'required|max:14|unique:conveyors,telephone,((ID{?})),id',
     ];
 
 }

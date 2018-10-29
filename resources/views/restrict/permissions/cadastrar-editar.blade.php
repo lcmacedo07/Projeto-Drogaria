@@ -22,7 +22,7 @@
 
                 <div class="card-body">
                     <div class='row'>
-                        div class='input-field col-md-3'>
+                        <div class='input-field col-md-3'>
                         <label>NOME</label>
                         {!! Form::text('name', null, ['required' => 'yes', 'min' => '5', 'maxlength' => '120', 'class' => 'form-control']) !!}
                         @if ($errors->has('name'))
@@ -37,10 +37,9 @@
                         @endif
                     </div>
                 </div>
-                <hr/>
                 <div class='btn-group'>
                     <button type='reset' class='btn btn-default waves-effect'>Resetar</button>
-                    <button type='submit' class='btn btn-primary waves-effect waves-light'>Salvar Dados</button>
+                    <button type='submit' class='btn btn-success waves-effect waves-light'>Salvar Dados</button>
                 </div>
                 {!! Form::close() !!}
             </div>

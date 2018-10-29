@@ -8,55 +8,59 @@
     </ol>
 </nav>
 
+<nav>
+    {{ $data->links() }}
+</nav>
+
 <div class="col-md-12">
     <div class="card card-plain">
         <div class="box-body">
-            <a href='{{url("/restrict/$page/create")}}' class='btn btn-primary white m-b-15'> Novo Registro</a>
+            <a href='{{url("/restrict/$page/create")}}' class='btn btn-success white m-b-15'> Novo Registro</a>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead class="">
                             <tr>
-                                <th>CODIGO DA LOJA</th>
-                                <th>CODIGO DA CIDADE</th>
-                                <th>NOME</th>
-                                <th>CNPJ</th>
-                                <th>ENDEREÇO</th>
-                                <th>UF</th>
-                                <th>TELEFONE</th>
-                                <th>CODIGO POSTAL</th>
-                                <th>RAZAO SOCIAL</th>
-                                <th>NOME FANTASIA</th>
-                                <th>INSC</th>
+                                <th width='115px'>#</th>
+                                <th width='115px'>CODIGO DA CIDADE</th>
+                                <th width='115px'>NOME</th>
+                                <th width='115px'>CNPJ</th>
+                                <th width='115px'>ENDEREÇO</th>
+                                <th width='115px'>TELEFONE</th>
+                                <th width='115px'>CODIGO POSTAL</th>
+                                <th width='115px'>RAZAO SOCIAL</th>
+                                <th width='115px'>NOME FANTASIA</th>
+                                <th width='115px'>INSC</th>
                                 <th width='115px'>#</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($data as $registro)
                             <tr>
-                                <td> {{ $registro->sto_codigo }} </td>
-                                <td> {{ $registro->cit_codigo }} </td>
-                                <td> {{ $registro->sto_name }} </td>
-                                <td> {{ $registro->sto_cnpj }} </td>
-                                <td> {{ $registro->sto_address }} </td>
-                                <td> {{ $registro->sto_uf }} </td>
-                                <td> {{ $registro->sto_telephone }} </td>
-                                <td> {{ $registro->sto_zip_code }} </td>
-                                <td> {{ $registro->sto_social_reason }} </td>
-                                <td> {{ $registro->sto_fantasy_name }} </td>
-                                <td> {{ $registro->sto_insc }} </td>
+                                <td> {{ $registro->id }} </td>
+                                <td> {{ $registro->city_id }} </td>
+                                <td> {{ $registro->name }} </td>
+                                <td> {{ $registro->cnpj }} </td>
+                                <td> {{ $registro->address }} </td>
+                                <td> {{ $registro->telephone }} </td>
+                                <td> {{ $registro->zip_code }} </td>
+                                <td> {{ $registro->social_reason }} </td>
+                                <td> {{ $registro->fantasy_name }} </td>
+                                <td> {{ $registro->insc }} </td>
                                 <td>
-                                    <div class='btn-group'>
-                                        <a href='{{url("/restrict/$page/$registro->sto_codigo/deletar")}}' 
+                                <a href='{{url("/restrict/$page/$registro->id/deletar")}}' 
                                            onClick="return confirm('Você quer mesmo deletar?')" 
-                                           class='btn blue-black-bg white' data-toggle='tooltip' data-placement='top' title='Delete'>
-                                            <i class="material-icons">delete</i>
+                                            data-toggle='tooltip' data-placement='top' title='Deletar'>
+                                            <button class="btn btn-danger btn-sm" type="button">
+                                                <i class="material-icons">delete</i>
+                                            </button>
                                         </a>
-                                        <a href='{{url("/restrict/$page/$registro->sto_codigo/edit")}}' 
-                                           data-toggle='tooltip' data-placement='top' title='Editar' class='btn blue-black-bg white'>
+                                        <a href='{{url("/restrict/$page/$registro->id/edit")}}' 
+                                           data-toggle='tooltip' data-placement='top' title='Editar' >
+                                           <button class="btn btn-success btn-sm" type="button">
                                             <i class="material-icons">build</i>
+                                           </button>
                                         </a>
-                                    </div>
                                 </td>
                             </tr>
                             @endforeach

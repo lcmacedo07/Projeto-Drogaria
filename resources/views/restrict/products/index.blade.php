@@ -8,10 +8,14 @@
     </ol>
 </nav>
 
+<nav>
+    {{ $data->links() }}
+</nav>
+
 <div class="col-md-12">
     <div class="card card-plain">
         <div class="box-body">
-            <a href='{{url("/restrict/$page/create")}}' class='btn btn-primary white m-b-15'> Novo Registro</a>
+            <a href='{{url("/restrict/$page/create")}}' class='btn btn-success white m-b-15'> Novo Registro</a>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-hover">
@@ -30,26 +34,27 @@
                         <tbody>
                             @foreach($data as $registro)
                             <tr>
-                                <td> {{ $registro->prod_codigo }} </td>
-                                <td> {{ $registro->cat_codigo }} </td>
-                                <td> {{ $registro->pro_codigo }} </td>
-                                <td> {{ $registro->prod_description }} </td>
-                                <td> {{ $registro->prod_weight }} </td>
-                                <td> {{ $registro->prod_controlled }} </td>
-                                <td> {{ $registro->prod_determined_amount }} </td>
+                                <td> {{ $registro->id }} </td>
+                                <td> {{ $registro->category_id }} </td>
+                                <td> {{ $registro->provider_id }} </td>
+                                <td> {{ $registro->description }} </td>
+                                <td> {{ $registro->weight }} </td>
+                                <td> {{ $registro->controlled }} </td>
+                                <td> {{ $registro->determined_amount }} </td>
                                 <td>
-
-                                    <div class='btn-group'>
-                                        <a href='{{url("/restrict/$page/$registro->prod_codigo/deletar")}}' 
+                                     <a href='{{url("/restrict/$page/$registro->id/deletar")}}' 
                                            onClick="return confirm('Você quer mesmo deletar?')" 
-                                           class='btn blue-black-bg white' data-toggle='tooltip' data-placement='top' title='Delete'>
-                                            <i class="material-icons">delete</i>
+                                            data-toggle='tooltip' data-placement='top' title='Deletar'>
+                                            <button class="btn btn-danger btn-sm" type="button">
+                                                <i class="material-icons">delete</i>
+                                            </button>
                                         </a>
-                                        <a href='{{url("/restrict/$page/$registro->prod_codigo/edit")}}' 
-                                           data-toggle='tooltip' data-placement='top' title='Editar' class='btn blue-black-bg white'>
+                                        <a href='{{url("/restrict/$page/$registro->id/edit")}}' 
+                                           data-toggle='tooltip' data-placement='top' title='Editar' >
+                                           <button class="btn btn-success btn-sm" type="button">
                                             <i class="material-icons">build</i>
+                                           </button>
                                         </a>
-                                    </div>
                                 </td>
                             </tr>
                             @endforeach

@@ -10,21 +10,21 @@ class ItemInputs extends Model {
     use SoftDeletes;
 
     protected $table = 'item_inputs';
-    protected $primaryKey = 'itemi_codigo';
+    protected $primaryKey = 'id';
     protected $fillable = [ 
-            'prod_codigo',
-            'inp_codigo',
-            'itemi_lot',
-            'itemi_amount',
-            'itemi_value',
+            'product_id',
+            'input_id',
+            'lot',
+            'amount',
+            'value',
                 ];
     
     public $rules = [
-        'prod_codigo' => 'required|numeric',
-        'inp_codigo' => 'required|numeric',
-        'itemi_lot' => 'required|max:30',
-        'itemi_amount' => 'required|numeric',
-        'itemi_value' => 'required|numeric',
+        'product_id' => 'required|numeric',
+        'input_id' => 'required|numeric',
+        'lot' => 'required|max:30',
+        'amount' => 'required|numeric',
+        'value' => 'required|numeric',
     ];
 
 }

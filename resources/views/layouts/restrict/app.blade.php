@@ -15,7 +15,8 @@
 
         <link href="{{ asset('assets/backend/css/material-dashboard.css?v=2.1.0') }}" rel="stylesheet" />
         <link href="{{ asset('assets/backend/demo/demo.css')}}" rel="stylesheet" />
-
+        
+        
         <link rel="stylesheet" href="https://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
 
         @stack('css')
@@ -50,9 +51,9 @@
                     <li class="adjustments-line">
                         <a href="javascript:void(0)" class="switch-trigger active-color">
                             <div class="badge-colors ml-auto mr-auto">
-                                <span class="badge filter badge-purple active" data-color="purple"></span>
+                                <span class="badge filter badge-green active" data-color="green"></span>
                                 <span class="badge filter badge-azure" data-color="azure"></span>
-                                <span class="badge filter badge-green" data-color="green"></span>
+                                <span class="badge filter badge-purple" data-color="purple"></span>
                                 <span class="badge filter badge-warning" data-color="orange"></span>
                                 <span class="badge filter badge-danger" data-color="danger"></span>
                             </div>
@@ -62,22 +63,22 @@
                     <li class="header-title">Images</li>
                     <li>
                         <a class="img-holder switch-trigger" href="javascript:void(0)">
-                            <img src="{{ asset('assets/backend/img/sidebar-1.jpg') }}" alt="">
+                            <img src="{{ asset('assets/backend/img/farmacia01.jpg') }}" alt="">
                         </a>
                     </li>
                     <li class="active">
                         <a class="img-holder switch-trigger" href="javascript:void(0)">
-                            <img src="{{ asset('assets/backend/img/sidebar-2.jpg') }}" alt="">
+                            <img src="{{ asset('assets/backend/img/farmacia02.jpg') }}" alt="">
                         </a>
                     </li>
                     <li>
                         <a class="img-holder switch-trigger" href="javascript:void(0)">
-                            <img src="{{ asset('assets/backend/img/sidebar-3.jpg') }}" alt="">
+                            <img src="{{ asset('assets/backend/img/farmacia03.jpg') }}" alt="">
                         </a>
                     </li>
                     <li>
                         <a class="img-holder switch-trigger" href="javascript:void(0)">
-                            <img src="{{ asset('assets/backend/img/sidebar-4.jpg') }}" alt="">
+                            <img src="{{ asset('assets/backend/img/farmacia04.jpg') }}" alt="">
                         </a>
                     </li>
 
@@ -101,10 +102,6 @@
         <script src="{{ asset('assets/backend/js/plugins/bootstrap-notify.js') }}"></script>
         <script src="{{ asset('assets/backend/js/material-dashboard.js?v=2.1.0') }}"></script>
         <script src="{{ asset('assets/backend/demo/demo.js') }}"></script>
-
-        <!--<script src="https://unpkg.com/default-passive-events"></script>
-        <script async defer src="https://buttons.github.io/buttons.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>-->
 
         <script>
 $(document).ready(function () {

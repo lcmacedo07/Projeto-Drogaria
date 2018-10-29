@@ -45,12 +45,11 @@ class User extends Authenticatable
         'genre' => 'required|max:1',
         'date_of_birth' => 'required|date',
         'cpf' => 'required|max:14',
-        /* rg */
         'telephone' => 'max:14',
-        'cellphone' => 'max:16',
+        'cellphone' => 'required|max:16|unique:users,cellphone,((ID{?})),id',
         'cellphone2' => 'max:16',
         'email' => 'required|max:255|unique:users,email,((ID{?})),id',
-        'password' => 'required',
+        'password' => 'required|min:4',
         'type' => 'required|max:20',
     ];
     protected $hidden = [

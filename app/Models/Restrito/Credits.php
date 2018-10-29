@@ -10,34 +10,34 @@ class Credits extends Model {
     use SoftDeletes;
 
     protected $table = 'credits';
-    protected $primaryKey = 'cred_codigo';
+    protected $primaryKey = 'id';
     protected $fillable = [
-        'ct_codigo',
-        'bud_codigo',
-        'cred_datereferencies',
-        'cred_datelaunch',
-        'cred_datematurity',
-        'cred_datereceipt',
-        'cred_value',
-        'cred_valuereceipt',
-        'cred_documentnumber',
-        'cred_ournumber',
-        'cred_complements',
-        'cred_status',
+        'credits_type_id',
+        'budget_id',
+        'datereferencies',
+        'datelaunch',
+        'datematurity',
+        'datereceipt',
+        'value',
+        'valuereceipt',
+        'documentnumber',
+        'ournumber',
+        'complements',
+        'status',
     ];
     public $rules = [
-        'ct_codigo' => 'required|numeric',
-        'bud_codigo' => 'required|numeric',
-        'cred_datereferencies' => 'required|date',
-        'cred_datelaunch' => 'required|date',
-        'cred_datematurity' => 'required|date',
-        'cred_datereceipt' => 'required|date',
-        'cred_value' => 'required',
-        'cred_valuereceipt' => 'required',
-        'cred_documentnumber' => 'required|max:20',
-        'cred_ournumber' => 'required|max:25',
-        'cred_complements' => 'max:200',
-        'cred_status' => 'required|max:50',
+        'credits_type_id' => 'required|numeric',
+        'budget_id' => 'required|numeric',
+        'datereferencies' => 'required|date',
+        'datelaunch' => 'required|date',
+        'datematurity' => 'required|date',
+        'datereceipt' => 'required|date',
+        'value' => 'required',
+        'valuereceipt' => 'required',
+        'documentnumber' => 'required|max:20|unique:credits,documentnumber,((ID{?})),id',
+        'ournumber' => 'required|max:25',
+        'complements' => 'max:200',
+        'status' => 'required|max:50',
     ];
 
 }

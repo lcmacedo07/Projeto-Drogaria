@@ -12,8 +12,8 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                @if(isset($data->pur_codigo))
-                {!! Form::model($data, ['url' => "/restrict/$page/$data->pur_codigo", 'method' => 'PATCH',
+                @if(isset($data->id))
+                {!! Form::model($data, ['url' => "/restrict/$page/$data->id", 'method' => 'PATCH',
                 'class' => 'form-horizontal', 'enctype'=>'multipart/form-data']) !!}
                 @else
                 {!! Form::open(['url' => route("$page.store"), 'method' => 'POST', 'class' => 'form-horizontal',
@@ -25,17 +25,17 @@
                         <div class='input-field col-md-4'>
                             <label>CODIGO DO FORNECEDOR</label>
                             <div class="input-group">
-                                <select name='pro_codigo' class='form-control'>
+                                <select name='provider_id' class='form-control'>
                                     @foreach($providers as $provider)
                                     <option 
-                                        @if(isset($data->pro_codigo) && ($data->pro_codigo==$provider->pro_codigo)) @php echo 'selected'; @endphp @endif 
-                                        value="{{$provider->pro_codigo}}" >
-                                        {{$provider->pro_provider}}
+                                        @if(isset($data->provider_id) && ($data->provider_id==$provider->id)) @php echo 'selected'; @endphp @endif 
+                                        value="{{$provider->id}}" >
+                                        {{$provider->provider}}
                                 </option>
                                 @endforeach
                             </select>
-                            @if ($errors->has('pro_codigo'))
-                            <span class='text-danger'> {{ $errors->first('pro_codigo') }} </span>
+                            @if ($errors->has('provider_id'))
+                            <span class='text-danger'> {{ $errors->first('provider_id') }} </span>
                             @endif
                         </div>
                     </div>
@@ -43,18 +43,18 @@
                     <div class='input-field col-md-4'>
                         <label>DATA DA COMPRA</label>
                         <div class="input-group">
-                            {!! Form::date('pur_date', null, ['required' => 'yes', 'min' => '5', 'class' => 'form-control']) !!}
-                            @if ($errors->has('pur_date'))
-                            <span class='text-danger'> {{ $errors->first('pur_date') }} </span>
+                            {!! Form::date('date', null, ['required' => 'yes', 'min' => '5', 'class' => 'form-control']) !!}
+                            @if ($errors->has('date'))
+                            <span class='text-danger'> {{ $errors->first('date') }} </span>
                             @endif
                         </div>
                     </div>
                     <div class='input-field col-md-4'>
                         <label>REFERENCIA</label>
                         <div class="input-group">
-                            {!! Form::text('pur_reference', null, ['required' => 'yes', 'min' => '5', 'maxlength' => '200', 'class' => 'form-control']) !!}
-                            @if ($errors->has('pur_reference'))
-                            <span class='text-danger'> {{ $errors->first('pur_reference') }} </span>
+                            {!! Form::text('reference', null, ['required' => 'yes', 'min' => '5', 'maxlength' => '200', 'class' => 'form-control']) !!}
+                            @if ($errors->has('reference'))
+                            <span class='text-danger'> {{ $errors->first('reference') }} </span>
                             @endif
                         </div>
                     </div>
@@ -63,41 +63,42 @@
                     <div class='input-field col-md-6'>
                         <label>QUANTIDADE</label>
                         <div class="input-group">
-                            {!! Form::number('pur_amount', null, ['required' => 'yes', 'min' => '1', 'class' => 'form-control']) !!}
-                            @if ($errors->has('pur_amount'))
-                            <span class='text-danger'> {{ $errors->first('pur_amount') }} </span>
+                            {!! Form::number('amount', null, ['required' => 'yes', 'min' => '1', 'class' => 'form-control']) !!}
+                            @if ($errors->has('amount'))
+                            <span class='text-danger'> {{ $errors->first('amount') }} </span>
                             @endif
                         </div>
                     </div>
                     <div class='input-field col-md-6'>
                         <label>VALOR</label>
                         <div class="input-group">
-                            {!! Form::number('pur_value', null, ['required' => 'yes', 'min' => '1', 'class' => 'form-control']) !!}
-                            @if ($errors->has('pur_value'))
-                            <span class='text-danger'> {{ $errors->first('pur_value') }} </span>
+                            {!! Form::number('value', null, ['required' => 'yes', 'min' => '1', 'class' => 'form-control']) !!}
+                            @if ($errors->has('value'))
+                            <span class='text-danger'> {{ $errors->first('value') }} </span>
                             @endif
                         </div>
                     </div>
                 </div> 
-                <hr/>
                 <div class='btn-group'>
                     <button type='reset' class='btn btn-default waves-effect'>Resetar</button>
-                    <button type='submit' class='btn btn-primary waves-effect waves-light'>Salvar Dados</button>
+                    <button type='submit' class='btn btn-success waves-effect waves-light'>Salvar Dados</button>
                 </div>
                 {!! Form::close() !!}
             </div>
         </div>
     </div>
+</div>
+</div>
 
-    @push('css')
-    <link rel='stylesheet' href='{{asset('bower_components/bootstrap-select/dist/css/bootstrap-select.css')}}'/>
-    @endpush
+@push('css')
+<link rel='stylesheet' href='{{asset('bower_components/bootstrap-select/dist/css/bootstrap-select.css')}}'/>
+@endpush
 
-    @push('js-topo')
-    @endpush
+@push('js-topo')
+@endpush
 
-    @push('js')
-    <script src="{{asset('bower_components/bootstrap-select/dist/js/bootstrap-select.js')}}"></script>
-    @endpush
-    
-    @endsection
+@push('js')
+<script src="{{asset('bower_components/bootstrap-select/dist/js/bootstrap-select.js')}}"></script>
+@endpush
+
+@endsection

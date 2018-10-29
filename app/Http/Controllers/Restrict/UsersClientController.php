@@ -8,6 +8,8 @@ use App\User;
 use Gate;
 use Alert;
 use Illuminate\Support\Facades\Crypt;
+use Brian2694\Toastr\Facades\Toastr;
+
 
 class UsersClientController extends StandardController {
 
@@ -17,6 +19,7 @@ class UsersClientController extends StandardController {
     protected $gate;
     protected $nomeView = 'restrict.users-clients';
     protected $redirectIndex = '/restrict/users-clients';
+    protected $totalPorPagina = 4; 
 
     public function __construct(User $model, Request $request) {
         $this->model = $model;
@@ -37,7 +40,7 @@ class UsersClientController extends StandardController {
                         ->with('page', $this->page)
                         ->with('titulo', $this->titulo);
     }
-    
+
     public function store() {
         $gate = $this->gate;
         if (Gate::denies("$gate")) {
@@ -50,21 +53,12 @@ class UsersClientController extends StandardController {
         
         $pass = ['password' => bcrypt($pass)];
         $dadosForm = array_merge($dadosForm, $pass);
-        
-        
-        
-//        dd($dadosForm);
+
         $validator = validator($dadosForm, $this->model->rules);
-        /*
-        if ($validator->fails()) {
-            $messages = $validator->messages();
-            return $messages;
-        }
-         * 
-         */
+   
          
         if ($validator->fails()) {
-            alert()->error('Houve um erro no registro. Corrija e tente novamente!', 'Falha na inserção!')->autoclose(4500);
+            Toastr::error('Houve um erro no registro. Corrija e tente novamente!', 'Errors :(');
             return redirect()->back()
                             ->withErrors($validator)
                             ->withInput()
@@ -74,11 +68,60 @@ class UsersClientController extends StandardController {
             $insert = $this->model->create($dadosForm);
         }
         if ($insert) {
-            alert()->success('', 'Registro inserido!');
+            Toastr::success('Registro inserido com Sucesso!', 'Success :)');
+            return redirect("$this->redirectIndex")
+                            ->with('page', $this->page)
+                            ->with('titulo', $this->titulo);
+        }
+
+    }
+
+
+    public function update($id) {
+
+        $gate = $this->gate;
+        if (Gate::denies("$gate")) {
+            abort(403, 'Não Autorizado!');
+        }
+
+        $rules = $this->model->rules;
+        $rulesTratada = str_replace("((ID{?}))", $id, $rules);
+        $dadosForm = $this->request->all();
+        $client = ['type' => 'client'];
+        $dadosForm = array_merge($dadosForm, $client);
+        
+        $pass = $dadosForm['password'];
+        $pass = ['password' => bcrypt($pass)];
+        $dadosForm = array_merge($dadosForm, $pass);
+        
+        //dd($dadosForm);
+        $validator = validator($dadosForm, $rulesTratada);
+
+        /*
+        if ($validator->fails()) {
+            $messages = $validator->messages();
+            return $messages;
+        }
+        */
+        
+        if ($validator->fails()) {
+            Toastr::error('Houve um erro no registro. Corrija e tente novamente!', 'Errors :(');
+            return redirect()->back()
+                            ->withErrors($validator)
+                            ->withInput()
+                            ->with('page', $this->page)
+                            ->with('titulo', $this->titulo);
+        } else {
+            $item = $this->model->find($id);
+            $update = $item->update($dadosForm);
+        }
+
+        if ($update) {
+            Toastr::success('Registro alterado com Sucesso!', 'Success :)');
             return redirect("$this->redirectIndex")
                             ->with('page', $this->page)
                             ->with('titulo', $this->titulo);
         }
     }
 
-}
+    }

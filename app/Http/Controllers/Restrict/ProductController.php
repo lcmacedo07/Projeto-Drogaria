@@ -85,12 +85,7 @@ class ProductController extends StandardController {
         
         $dadosForm = $this->request->all();
         $validator = validator($dadosForm, $this->model->rules);
-        /*
-          if ($validator->fails()) {
-          $messages = $validator->messages();
-          return $messages;
-          }
-         */
+        
         if ($validator->fails()) {
             alert()->error('Houve um erro no registro. Corrija e tente novamente!', 'Falha na inserção!')->autoclose(4500);
             return redirect()->back()

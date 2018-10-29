@@ -10,16 +10,16 @@ class Services extends Model {
     use SoftDeletes;
 
     protected $table = 'services';
-    protected $primaryKey = 'serv_codigo';
+    protected $primaryKey = 'id';
     protected $fillable = [
-        'serv_type',
-        'serv_description',
-        'serv_value',
+        'type',
+        'description',
+        'value',
     ];
     public $rules = [
-        'serv_type' => 'required|max:200',
-        'serv_description' => 'required|max:500',
-        'serv_value' => 'required',
+        'type' => 'required|max:200|unique:services,type,((ID{?})),id',
+        'description' => 'required|max:500',
+        'value' => 'required',
     ];
 
 }

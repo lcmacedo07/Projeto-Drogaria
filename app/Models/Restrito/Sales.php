@@ -10,19 +10,19 @@ class Sales extends Model {
     use SoftDeletes;
 
     protected $table = 'sales';
-    protected $primaryKey = 'sal_codigo';
+    protected $primaryKey = 'id';
     protected $fillable = [ 
-            'sal_date',
-            'sal_amount',
-            'sal_exit_price',
-            'sal_cost_price',
+            'date',
+            'amount',
+            'exit_price',
+            'cost_price',
                 ];
     
     public $rules = [
-        'sal_date' => 'required|date',
-        'sal_amount' => 'required|numeric',
-        'sal_exit_price' => 'required|numeric',
-        'sal_cost_price' => 'required|numeric',
+        'date' => 'required|date',
+        'amount' => 'required|numeric',
+        'exit_price' => 'required|numeric',
+        'cost_price' => 'required|numeric',
     ];
 
 }

@@ -12,8 +12,8 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                @if(isset($data->cat_codigo))
-                {!! Form::model($data, ['url' => "/restrict/$page/$data->cat_codigo", 'method' => 'PATCH',
+                @if(isset($data->id))
+                {!! Form::model($data, ['url' => "/restrict/$page/$data->id", 'method' => 'PATCH',
                 'class' => 'form-horizontal', 'enctype'=>'multipart/form-data']) !!}
                 @else
                 {!! Form::open(['url' => route("$page.store"), 'method' => 'POST', 'class' => 'form-horizontal',
@@ -23,37 +23,35 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="form-group">
-                                <label>CATEGORIA</label>
-                                <div class="input-group">
+                            <label>CATEGORIA</label>
+                            <div class="input-group">
 
-                                    {!! Form::text('cat_category', null, ['required' => 'yes', 'maxlength' => '250', 'class' => 'form-control']) !!}
-                                    @if ($errors->has('cat_category'))
-                                    <span class='text-danger'> {{ $errors->first('cat_category') }} </span>
-                                    @endif
-                                </div>
-
-                                <div class='btn-group'>
-                                    <button type='reset' class='btn btn-default waves-effect'>Resetar</button>
-                                    <button type='submit' class='btn btn-primary waves-effect waves-light'>Salvar Dados</button>
-                                </div>
-                                {!! Form::close() !!}
+                                {!! Form::text('category', null, ['required' => 'yes', 'maxlength' => '250', 'class' => 'form-control']) !!}
+                                @if ($errors->has('category'))
+                                <span class='text-danger'> {{ $errors->first('category') }} </span>
+                                @endif
                             </div>
+
                         </div>
                     </div>
+                    <div class='btn-group'>
+                        <button type='reset' class='btn btn-default waves-effect'>Resetar</button>
+                        <button type='submit' class='btn btn-success waves-effect waves-light'>Salvar Dados</button>
+                    </div>
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
-        @push('css')
-        <link rel='stylesheet' href='{{asset('bower_components/bootstrap-select/dist/css/bootstrap-select.css')}}'/>
-        @endpush
+@push('css')
+@endpush
 
-        @push('js-topo')
-        @endpush
+@push('js-topo')
+@endpush
 
-        @push('js')
-        <script src="{{asset('bower_components/bootstrap-select/dist/js/bootstrap-select.js')}}"></script>
-        @endpush
+@push('js')
+@endpush
 
-        @endsection
+@endsection

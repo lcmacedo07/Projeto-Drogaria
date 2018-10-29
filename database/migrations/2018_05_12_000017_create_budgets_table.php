@@ -8,16 +8,15 @@ class CreateBudgetsTable extends Migration {
 
     public function up() {
         Schema::create('budgets', function (Blueprint $table) {
-            $table->increments('bud_codigo');
+            $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->integer('bud_validateproposal');
-            $table->string('bud_conditionspayments', 30);
-            $table->integer('bud_qtdpayments');
-            $table->integer('bud_value');
-            $table->integer('bud_discount')->nullable();
-            $table->string('bud_status', 30);
-            /* USAR EM TODAS */
+            $table->integer('validateproposal');
+            $table->string('conditionspayments', 30);
+            $table->integer('qtdpayments');
+            $table->integer('value');
+            $table->integer('discount')->nullable();
+            $table->string('status', 30);
             $table->timestamps();
             $table->softDeletes();
         });

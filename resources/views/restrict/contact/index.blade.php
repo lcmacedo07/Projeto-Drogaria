@@ -1,5 +1,5 @@
 @extends('layouts.restrict.app')
-@section('title','Contact')
+@section('title'){{$titulo}} - {{config('app.name')}}@endsection
 @section('content')
 
 <nav aria-label='breadcrumb' class='m-t-20'>
@@ -7,6 +7,10 @@
         <li class='breadcrumb-item'><a href='{{url('/restrict')}}'>HOME</a></li>
         <li class='breadcrumb-item active' aria-current='page'>MENSAGEM</li>
     </ol>
+</nav>
+
+<nav>
+    {{ $data->links() }}
 </nav>
 
 <div class="col-md-12">
@@ -25,25 +29,22 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($contacts as $key=>$contact)
+                            @foreach($data as $registro)
                             <tr>
-                                <td>{{ $key + 1 }}</td>
-                                <td>{{ $contact->name }}</td>
-                                <td>{{ $contact->subject }}</td>
-                                <td>{{ $contact->created_at }}</td>
+                                <td>{{ $registro->id }}</td>
+                                <td>{{ $registro->name }}</td>
+                                <td>{{ $registro->subject }}</td>
+                                <td>{{ $registro->created_at }}</td>
                                 <td>
-                                    <a href="{{ route('contact.show',$contact->id) }}" class="btn btn-info btn-sm"><i class="material-icons">details</i></a>
-
-                                    <form id="delete-form-{{ $contact->id }}" action="{{ route('contact.destroy',$contact->id) }}" style="display: none;" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                    </form>
-                                    <button type="button" class="btn btn-danger btn-sm" onclick="if(confirm('Are you sure? You want to delete this?')){
-                                                event.preventDefault();
-                                        document.getElementById('delete-form-{{ $contact->id }}').submit();
-                                            } else {
-                                            event.preventDefault();
-                                            }"><i class="material-icons">delete</i></button>
+                                    <a href='{{ url("/restrict/$page/$registro->id") }}' class="btn btn-info btn-sm"><i class="material-icons">details</i></a>
+                                    
+                                    <a href='{{url("/restrict/$page/$registro->id/deletar")}}' 
+                                           onClick="return confirm('Você quer mesmo deletar?')" 
+                                            data-toggle='tooltip' data-placement='top' title='Deletar'>
+                                            <button class="btn btn-danger btn-sm" type="button">
+                                                <i class="material-icons">delete</i>
+                                            </button>
+                                        </a>
                                 </td>
                             </tr>
                             @endforeach

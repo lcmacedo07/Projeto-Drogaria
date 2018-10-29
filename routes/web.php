@@ -89,11 +89,8 @@ Route::group(['prefix' => 'restrict', 'middleware' => ['auth']], function() {
     Route::resource('conveyors', 'Restrict\ConveyorController');
     Route::get('conveyors/{id}/deletar', 'Restrict\ConveyorController@delete');
     
-    Route::get('contact','Restrict\ContactController@index')->name('contact.index');
-    Route::get('contact/{id}','Restrict\ContactController@show')->name('contact.show');
-    Route::delete('contact/{id}','Restrict\ContactController@destroy')->name('contact.destroy');
-
-
+    Route::resource('contact','Restrict\ContactController');
+    Route::get('contact/{id}/deletar', 'Restrict\ContactController@delete');
     
     //Rota Inical do Dashboard
     Route::get('/', 'Restrict\RestritoController@index');

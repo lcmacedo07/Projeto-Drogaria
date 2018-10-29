@@ -8,13 +8,12 @@ class CreateStocksTable extends Migration {
 
     public function up() {
         Schema::create('stocks', function (Blueprint $table) {
-            $table->increments('sto_codigo');
-            $table->string('sto_name', 60);
-            $table->double('sto_available_inventory');
-            $table->double('sto_cost_value');
-            $table->double('sto_salue_value');
-            $table->double('sto_profit_value');
-            /* USAR EM TODAS */
+            $table->increments('id');
+            $table->string('name', 60);
+            $table->double('available_inventory');
+            $table->double('cost_value');
+            $table->double('salue_value');
+            $table->double('profit_value');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -8,11 +8,10 @@ class CreateServicesTable extends Migration {
 
     public function up() {
         Schema::create('services', function (Blueprint $table) {
-            $table->increments('serv_codigo');
-            $table->string('serv_type', 200);
-            $table->string('serv_description', 500);
-            $table->float('serv_value', 10, 2);
-            /* USAR EM TODAS */
+            $table->increments('id');
+            $table->string('type', 200);
+            $table->string('description', 500);
+            $table->float('value', 10, 2);
             $table->timestamps();
             $table->softDeletes();
         });

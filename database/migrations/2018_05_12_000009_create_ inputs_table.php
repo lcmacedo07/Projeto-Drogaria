@@ -13,15 +13,15 @@ class CreateInputsTable extends Migration {
      */
     public function up() {
         Schema::create('inputs', function (Blueprint $table) {
-            $table->increments('inp_codigo');
-            $table->integer('con_codigo')->unsigned();
-            $table->foreign('con_codigo')->references('con_codigo')->on('conveyors')->onDelete('cascade');
-            $table->date('inp_requested_date');
-            $table->date('inp_entry_date');
-            $table->double('inp_total');
-            $table->double('inp_freight');
-            $table->integer('inp_numnf');
-            $table->double('inp_tax');
+            $table->increments('id');
+            $table->integer('conveyor_id')->unsigned();
+            $table->foreign('conveyor_id')->references('id')->on('conveyors')->onDelete('cascade');
+            $table->date('requested_date');
+            $table->date('entry_date');
+            $table->double('total');
+            $table->double('freight');
+            $table->double('numnf');
+            $table->double('tax');
             $table->timestamps();
             $table->softDeletes();
         });

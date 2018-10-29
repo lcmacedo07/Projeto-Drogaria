@@ -10,21 +10,21 @@ class Stocks extends Model {
     use SoftDeletes;
 
     protected $table = 'stocks';
-    protected $primaryKey = 'sto_codigo';
+    protected $primaryKey = 'id';
     protected $fillable = [ 
-            'sto_name',
-            'sto_available_inventory',
-            'sto_cost_value',
-            'sto_salue_value',
-            'sto_profit_value',
+            'name',
+            'available_inventory',
+            'cost_value',
+            'salue_value',
+            'profit_value',
                 ];
     
     public $rules = [
-        'sto_name' => 'required|max:60',
-        'sto_available_inventory' => 'required|numeric',
-        'sto_cost_value' => 'required|numeric',
-        'sto_salue_value' => 'required|numeric',
-        'sto_profit_value' => 'required|numeric',
+        'name' => 'required|max:60|unique:stocks,name,((ID{?})),id',
+        'available_inventory' => 'required|numeric',
+        'cost_value' => 'required|numeric',
+        'salue_value' => 'required|numeric|unique:stocks,salue_value,((ID{?})),id',
+        'profit_value' => 'required|numeric',
     ];
 
 }

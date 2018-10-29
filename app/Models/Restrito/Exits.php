@@ -10,21 +10,21 @@ class Exits extends Model {
     use SoftDeletes;
 
     protected $table = 'exits';
-    protected $primaryKey = 'exi_codigo';
+    protected $primaryKey = 'id';
     protected $fillable = [ 
-            'sto_codigo',
-            'con_codigo',
-            'exi_total',
-            'exi_freight',
-            'exi_tax',
+            'store_id',
+            'conveyor_id',
+            'total',
+            'freight',
+            'tax',
                 ];
     
     public $rules = [
-        'sto_codigo' => 'required|numeric',
-        'con_codigo' => 'required|numeric',
-        'exi_total' => 'required|numeric',
-        'exi_freight' => 'required|numeric',
-        'exi_tax' => 'required|numeric',
+        'store_id' => 'required|numeric',
+        'conveyor_id' => 'required|numeric',
+        'total' => 'required|numeric',
+        'freight' => 'required|numeric',
+        'tax' => 'required|numeric',
     ];
 
 }

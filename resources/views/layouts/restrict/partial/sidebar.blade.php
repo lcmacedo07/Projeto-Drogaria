@@ -1,4 +1,4 @@
-<div class="sidebar" data-color="purple" data-background-color="black" data-image="{{ asset('assets/backend/img/sidebar-2.jpg') }}">
+<div class="sidebar" data-color="green" data-background-color="black" data-image="{{ asset('assets/backend/img/farmacia01.jpg') }}">
 
     <div class="logo">
         <a href="#" class="simple-text logo-normal">
@@ -9,18 +9,18 @@
         <ul class="nav">
             
             <li class="nav-item active">
-                <a class="nav-link" href="{{ url('/home') }}">
+                <a class="nav-link" href="{{ url('/restrict') }}">
                     <i class="material-icons">dashboard</i>
                     <p>Dashboard</p>
                 </a>
             </li>
             
-            @if( Gate::check('STORE') 
+            @if( Gate::check('DASHBOARD') 
             )
             
-            @can('STORE')<li class="nav-item ">
+            @can('DASHBOARD')<li class="nav-item ">
                 <a class="nav-link" href="{{ url('restrict/stores') }}">
-                    <i class="material-icons">home</i>
+                    <i class="material-icons">store</i>
                     <p>Loja</p>
                 </a>
             </li>@endcan
@@ -97,7 +97,7 @@
             @can('PROVIDERS')<li class="nav-item ">
                 <a class="nav-link" href="{{ url('restrict/providers') }}">
                     <i class="material-icons">library_books</i>
-                    <p>Forncedores</p>
+                    <p>Fornecedores</p>
                 </a>
             </li>@endcan
             
@@ -181,13 +181,15 @@
             
             @endif
             
-            <li class="nav-item ">
+            @if( Gate::check('CONTACT') 
+            ) 
+            @can('CONTACT')<li class="nav-item ">
                 <a class="nav-link" href="{{ url('restrict/contact') }}">
                     <i class="material-icons">message</i>
                     <p>Mensagem</p>
                 </a>
-            </li>
-            
+            </li>@endcan
+            @endif
             
         </ul>
     </div>

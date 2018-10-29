@@ -8,51 +8,53 @@
     </ol>
 </nav>
 
+
 <div class="col-md-12">
     <div class="card card-plain">
         <div class="box-body">
-            <a href='{{url("/restrict/$page/create")}}' class='btn btn-primary white m-b-15'> Novo Registro</a>
+            <a href='{{url("/restrict/$page/create")}}' class='btn btn-success white m-b-15'> Novo Registro</a>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead class="">
                             <tr>
-                                <th width='115px'>CODIGO DO ORÇAMENTO</th>
-                                <th>NOME DO USUÁRIO</th>
-                                <th>VALIDADE</th>
-                                <th>CONDIÇÕES</th>
-                                <th>STATUS</th>
-                                <th>TOTAL R$</th>
-                                <th>DESCONTO %</th>
+                                <th width='115px'>CODIGO DO USUARIO</th>
+                                <th width='115px'>NOME DO CLIENTE</th>
+                                <th width='115px'>VALIDADE</th>
+                                <th width='115px'>STATUS</th>
+                                <th width='115px'>CONDIÇÕES</th>
+                                <th width='115px'>TOTAL R$</th>
+                                <th width='115px'>DESCONTO %</th>
                                 <th width='115px'>#</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($data as $registro)
                             <tr>
-                                <td> {{ $registro->bud_codigo }} </td>
+                                <td> {{ $registro->id }} </td>
                                 <td> {{ $registro->name }} </td>
-                                <td> {{ $registro->bud_validateproposal }} DIAS</td>
-                                <td> {{ $registro->bud_status }} </td>
-                                <td> {{ $registro->bud_qtdpayments }}X - {{ $registro->bud_conditionspayments }} </td>
-                                <td> {{ $registro->bud_value }} </td>
-                                <td> {{ $registro->bud_discount }}% </td>
+                                <td> {{ $registro->validateproposal }} DIAS</td>
+                                <td> {{ $registro->status }} </td>
+                                <td> {{ $registro->qtdpayments }}X - {{ $registro-> conditionspayments }} </td>
+                                <td> {{ $registro->value }} </td>
+                                <td> {{ $registro->discount }}% </td>
                                 <td>
-                                    <div class='btn-group'>
-                                        <a href='{{url("/restrict/$page/$registro->bud_codigo/deletar")}}' 
+                                        <a href='{{ url("/restrict/$page/$registro->id") }}' class="btn btn-info btn-sm"><i class="material-icons">details</i></a>
+
+                                        <a href='{{url("/restrict/$page/$registro->id/deletar")}}' 
                                            onClick="return confirm('Você quer mesmo deletar?')" 
-                                           class='btn blue-black-bg white' data-toggle='tooltip' data-placement='top' title='Delete'>
-                                            <i class="material-icons">delete</i>
+                                            data-toggle='tooltip' data-placement='top' title='Deletar'>
+                                            <button class="btn btn-danger btn-sm" type="button">
+                                                <i class="material-icons">delete</i>
+                                            </button>
                                         </a>
-                                        <a href='{{url("/restrict/$page/$registro->bud_codigo/edit")}}' 
-                                           data-toggle='tooltip' data-placement='top' title='Editar' class='btn blue-black-bg white'>
+                                        
+                                        <a href='{{url("/restrict/$page/$registro->id/edit")}}' 
+                                           data-toggle='tooltip' data-placement='top' title='Editar' >
+                                           <button class="btn btn-success btn-sm" type="button">
                                             <i class="material-icons">build</i>
+                                           </button>
                                         </a>
-                                        <a href='{{url("/restrict/$page-pdf")}}' 
-                                           data-toggle='tooltip' data-placement='top' title='PDF' class='btn blue-black-bg white'>
-                                            <i class='glyphicon glyphicon-file'></i>
-                                        </a>
-                                    </div>
                                 </td>
                             </tr>
                             @endforeach
@@ -65,14 +67,11 @@
 
     @push('css')
     
-    <link rel='stylesheet' href='{{asset('css/sweetalert.css')}}'/>
     
     @endpush
 
     @push('js')
-    
-    @include('sweet::alert')
-    <script src='{{asset('js/sweetalert.min.js')}}'></script>
+   
     
     @endpush
 

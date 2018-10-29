@@ -1,5 +1,5 @@
 @extends('layouts.restrict.app')
-@section('title','Contact')
+@section('title'){{$titulo}} - {{config('app.name')}}@endsection
 @section('content')
 
 <nav aria-label='breadcrumb' class='m-t-20'>
@@ -13,15 +13,15 @@
     <div class="card card-plain">
         <div class="box-body">
             <div class="card-body">
-                <h4 class="title">{{ $contact->subject }}</h4>
+                <h4 class="title">{{ $data->subject }}</h4>
                 <div class="card-content">
                     <div class="row">
                         <div class="col-md-12">
-                            <strong>Nome: {{ $contact->name }}</strong><br>
-                            <b>E-mail: {{ $contact->email }}</b> <br>
+                            <strong>Nome: {{ $data->name }}</strong><br>
+                            <b>E-mail: {{ $data->email }}</b> <br>
                             <strong>Mensagem: </strong><hr>
 
-                            <p>{{ $contact->message }}</p><hr>
+                            <p>{{ $data->message }}</p><hr>
 
                         </div>
                     </div>

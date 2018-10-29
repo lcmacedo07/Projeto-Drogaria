@@ -13,14 +13,14 @@ class CreateItemInputsTable extends Migration {
      */
     public function up() {
         Schema::create('item_inputs', function (Blueprint $table) {
-            $table->increments('itemi_codigo');
-            $table->integer('prod_codigo')->unsigned();
-            $table->foreign('prod_codigo')->references('prod_codigo')->on('products')->onDelete('cascade');
-            $table->integer('inp_codigo')->unsigned();
-            $table->foreign('inp_codigo')->references('inp_codigo')->on('inputs')->onDelete('cascade');
-            $table->string('itemi_lot', 30);
-            $table->integer('itemi_amount');
-            $table->double('itemi_value');
+            $table->increments('id');
+            $table->integer('product_id')->unsigned();
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->integer('input_id')->unsigned();
+            $table->foreign('input_id')->references('id')->on('inputs')->onDelete('cascade');
+            $table->string('lot', 30);
+            $table->integer('amount');
+            $table->double('value');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -10,16 +10,16 @@ class ItensBudgets extends Model {
     use SoftDeletes;
 
     protected $table = 'itens_budgets';
-    protected $primaryKey = 'ib_codigo';
+    protected $primaryKey = 'id';
     protected $fillable = [
-        'bud_codigo',
-        'serv_codigo',
-        'ib_quant',
+        'budget_id',
+        'service_id',
+        'quant',
     ];
     public $rules = [
-        'bud_codigo' => 'required|numeric',
-        'serv_codigo' => 'required|numeric',
-        'ib_quant' => 'required|numeric',
+        'budget_id' => 'required|numeric',
+        'service_id' => 'required|numeric',
+        'quant' => 'required|numeric',
     ];
 
 }
