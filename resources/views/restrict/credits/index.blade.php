@@ -8,18 +8,12 @@
     </ol>
 </nav>
 
-<nav>
-    {{ $data->links() }}
-</nav>
-
 <div class="col-md-12">
-    <div class="card card-plain">
         <div class="box-body">
             <a href='{{url("/restrict/$page/create")}}' class='btn btn-success white m-b-15'> Novo Registro</a>
-            <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-hover">
-                        <thead class="">
+                    <table id="example" class="table table-striped table-bordered" style="width:100%">
+                        <thead>
                             <tr>
                                 <th>CODIGO DO CREDITO</th>
                                 <th>CODIGO DO TIPOS DE CREDITOS</th>
@@ -40,19 +34,19 @@
                         <tbody>
                             @foreach($data as $registro)
                             <tr>
-                                <td> {{ $registro->id }} </td>
-                                <td> {{ $registro->credits_type_id }} </td>
-                                <td> {{ $registro->budget_id }} </td>
-                                <td> {{ $registro->datereferencies }} </td>
-                                <td> {{ $registro->datelaunch }} </td>
-                                <td> {{ $registro->datematurity }} </td>
-                                <td> {{ $registro->datereceipt }} </td>
-                                <td> {{ $registro->value }} </td>
-                                <td> {{ $registro->valuereceipt }} </td>
-                                <td> {{ $registro->documentnumber }} </td>
-                                <td> {{ $registro->ournumber }} </td>
-                                <td> {{ $registro->status }} </td>
-                                <td> {{ $registro->complements }} </td>
+                                <td width='115px'> {{ $registro->id }} </td>
+                                <td width='115px'> {{ $registro->credits_type_id }} </td>
+                                <td width='115px'> {{ $registro->budget_id }} </td>
+                                <td width='115px'> {{ $registro->datereferencies }} </td>
+                                <td width='115px'> {{ $registro->datelaunch }} </td>
+                                <td width='115px'> {{ $registro->datematurity }} </td>
+                                <td width='115px'> {{ $registro->datereceipt }} </td>
+                                <td width='115px'> {{ $registro->value }} </td>
+                                <td width='115px'> {{ $registro->valuereceipt }} </td>
+                                <td width='115px'> {{ $registro->documentnumber }} </td>
+                                <td width='115px'> {{ $registro->ournumber }} </td>
+                                <td width='115px'> {{ $registro->status }} </td>
+                                <td width='115px'> {{ $registro->complements }} </td>
                                 <td>
                                          <a href='{{url("/restrict/$page/$registro->id/deletar")}}' 
                                            onClick="return confirm('Você quer mesmo deletar?')" 
@@ -71,23 +65,45 @@
                             </tr>
                             @endforeach
                         </tbody>
+                        <tfoot>
+                            <th>CODIGO DO CREDITO</th>
+                            <th>CODIGO DO TIPOS DE CREDITOS</th>
+                            <th>CODIGO DO ORÇAMENTOS</th>
+                            <th>DATA DE REFERÊNCIAS</th>
+                            <th>DATA DE LANÇAMENTO</th>
+                            <th>DATA DE VENCIMENTO</th>
+                            <th>DATA DE RECIBO</th>
+                            <th>VALOR R$</th>
+                            <th>RECEBIDO R$</th>
+                            <th>NUMERO DO DOCUMENTO</th>
+                            <th>NOSSO NUMERO</th>
+                            <th>STATUS</th>
+                            <th>COMPLEMENTO</th>
+                            <th width='115px'>#</th>
+                        </tfoot>
                     </table>
                 </div>
             </div>
         </div>
     </div>
 
-    @push('css')
-    
-    <link rel='stylesheet' href='{{asset('css/sweetalert.css')}}'/>
-    
-    @endpush
+@push('css')
 
-    @push('js')
-    
-    @include('sweet::alert')
-    <script src='{{asset('js/sweetalert.min.js')}}'></script>
-    
-    @endpush
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
 
-    @endsection
+@endpush
+
+@push('js')
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+</script>   
+
+@endpush
+
+@endsection

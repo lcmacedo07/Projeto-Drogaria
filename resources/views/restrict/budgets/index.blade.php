@@ -10,34 +10,32 @@
 
 
 <div class="col-md-12">
-    <div class="card card-plain">
         <div class="box-body">
             <a href='{{url("/restrict/$page/create")}}' class='btn btn-success white m-b-15'> Novo Registro</a>
-            <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-hover">
+                    <table id="example" class="table table-striped table-bordered" style="width:100%">
                         <thead class="">
                             <tr>
-                                <th width='115px'>CODIGO DO USUARIO</th>
-                                <th width='115px'>NOME DO CLIENTE</th>
-                                <th width='115px'>VALIDADE</th>
-                                <th width='115px'>STATUS</th>
-                                <th width='115px'>CONDIÇÕES</th>
-                                <th width='115px'>TOTAL R$</th>
-                                <th width='115px'>DESCONTO %</th>
+                                <th>CODIGO DO USUARIO</th>
+                                <th>NOME DO CLIENTE</th>
+                                <th>VALIDADE</th>
+                                <th>STATUS</th>
+                                <th>CONDIÇÕES</th>
+                                <th>TOTAL R$</th>
+                                <th>DESCONTO %</th>
                                 <th width='115px'>#</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($data as $registro)
                             <tr>
-                                <td> {{ $registro->id }} </td>
-                                <td> {{ $registro->name }} </td>
-                                <td> {{ $registro->validateproposal }} DIAS</td>
-                                <td> {{ $registro->status }} </td>
-                                <td> {{ $registro->qtdpayments }}X - {{ $registro-> conditionspayments }} </td>
-                                <td> {{ $registro->value }} </td>
-                                <td> {{ $registro->discount }}% </td>
+                                <td width='115px'> {{ $registro->id }} </td>
+                                <td width='115px'> {{ $registro->name }} </td>
+                                <td width='115px'> {{ $registro->validateproposal }} DIAS</td>
+                                <td width='115px'> {{ $registro->status }} </td>
+                                <td width='115px'> {{ $registro->qtdpayments }}X - {{ $registro-> conditionspayments }} </td>
+                                <td width='115px'> {{ $registro->value }} </td>
+                                <td width='115px'> {{ $registro->discount }}% </td>
                                 <td>
                                         <a href='{{ url("/restrict/$page/$registro->id") }}' class="btn btn-info btn-sm"><i class="material-icons">details</i></a>
 
@@ -59,20 +57,41 @@
                             </tr>
                             @endforeach
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>CODIGO DO USUARIO</th>
+                                <th>NOME DO CLIENTE</th>
+                                <th>VALIDADE</th>
+                                <th>STATUS</th>
+                                <th>CONDIÇÕES</th>
+                                <th>TOTAL R$</th>
+                                <th>DESCONTO %</th>
+                                <th width='115px'>#</th>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>
         </div>
     </div>
 
-    @push('css')
-    
-    
-    @endpush
+@push('css')
 
-    @push('js')
-   
-    
-    @endpush
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
 
-    @endsection
+@endpush
+
+@push('js')
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+</script>   
+
+@endpush
+
+@endsection

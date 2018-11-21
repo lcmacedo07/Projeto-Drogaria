@@ -136,12 +136,11 @@
 </div>
 
 @push('css')
-@endpush
 
-@push('js-topo')
 @endpush
 
 @push('js')
+
 @endpush
 
 @endsection

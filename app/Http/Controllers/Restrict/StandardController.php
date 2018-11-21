@@ -14,17 +14,17 @@ class StandardController extends BaseController {
     use AuthorizesRequests,
         DispatchesJobs,
         ValidatesRequests;
-
-    protected $totalPorPagina = 4; 
    
+    //protected $totalPorPagina = 5;    
+
     public function index() {
         $gate = $this->gate;
         if (Gate::denies("$gate")) {
             abort(403, 'Não Autorizado!');
         }
         
-//        $data = $this->model->all();
-        $data = $this->model->paginate($this->totalPorPagina);
+        $data = $this->model->all();
+        //$data = $this->model->paginate($this->totalPorPagina);
         
         return view("{$this->nomeView}.index", compact('data'))
                         ->with('page', $this->page)

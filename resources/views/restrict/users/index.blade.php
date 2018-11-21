@@ -8,18 +8,12 @@
     </ol>
 </nav>
 
-<nav>
-    {{ $data->links() }}
-</nav>
-
 <div class="col-md-12">
-    <div class="card card-plain">
         <div class="box-body">
             <a href='{{url("/restrict/$page/create")}}' class='btn btn-success white m-b-15'> Novo Registro</a>
-            <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-hover">
-                        <thead class="">
+                    <table id="example" class="table table-striped table-bordered" style="width:100%">
+                        <thead>
                             <tr>
                                 <th>ID DO USÚARIO</th>
                                 <th>NOME</th>
@@ -40,18 +34,18 @@
                             @foreach($data as $registro)
 
                             <tr>
-                                <td>{{$registro->id}}</td>
-                                <td>{{$registro->name}}</td>
-                                <td>{{$registro->genre}}</td>
-                                <td>{{$registro->date_of_birth}}</td>
-                                <td>{{$registro->cpf}}</td>
-                                <td>{{$registro->rg}}</td>
-                                <td>{{$registro->telephone}}</td>
-                                <td>{{$registro->cellphone}}</td>
-                                <td>{{$registro->cellphone2}}</td>
-                                <td>{{$registro->email}}</td>
-                                <td>{{$registro->password}}</td>
-                                <td>{{$registro->type}}</td>
+                                <td width='110px'>{{$registro->id}}</td>
+                                <td width='110px'>{{$registro->name}}</td>
+                                <td width='110px'>{{$registro->genre}}</td>
+                                <td width='110px'>{{$registro->date_of_birth}}</td>
+                                <td width='110px'>{{$registro->cpf}}</td>
+                                <td width='110px'>{{$registro->rg}}</td>
+                                <td width='110px'>{{$registro->telephone}}</td>
+                                <td width='110px'>{{$registro->cellphone}}</td>
+                                <td width='110px'>{{$registro->cellphone2}}</td>
+                                <td width='110px'>{{$registro->email}}</td>
+                                <td width='110px'>{{$registro->password}}</td>
+                                <td width='110px'>{{$registro->type}}</td>
                                 <td>
                                 <a href='{{url("/restrict/$page/$registro->id/deletar")}}' 
                                            onClick="return confirm('Você quer mesmo deletar?')" 
@@ -70,23 +64,46 @@
                             </tr>
                             @endforeach
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>ID DO USÚARIO</th>
+                                <th>NOME</th>
+                                <th>SEXO</th>
+                                <th>DATA DE NASCIMENTO</th>
+                                <th>CPF</th>
+                                <th>RG</th>
+                                <th>TELEFONE</th>
+                                <th>CELULAR</th>
+                                <th>CELULAR 2</th>
+                                <th>EMAIL</th>
+                                <th>SENHA</th>
+                                <th>TIPO</th>
+                                <th width='110px'>#</th>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>
         </div>
     </div>
 
-    @push('css')
+@push('css')
 
-    <link rel='stylesheet' href='{{asset('css/sweetalert.css')}}'/>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
 
-    @endpush
+@endpush
 
-    @push('js')
+@push('js')
 
-    @include('sweet::alert')
-    <script src='{{asset('js/sweetalert.min.js')}}'></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 
-    @endpush
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+</script>   
 
-    @endsection
+@endpush
+
+@endsection

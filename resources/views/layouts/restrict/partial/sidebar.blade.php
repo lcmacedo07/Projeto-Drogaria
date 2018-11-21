@@ -15,10 +15,10 @@
                 </a>
             </li>
             
-            @if( Gate::check('DASHBOARD') 
+            @if( Gate::check('STORE') 
             )
             
-            @can('DASHBOARD')<li class="nav-item ">
+            @can('STORE')<li class="nav-item ">
                 <a class="nav-link" href="{{ url('restrict/stores') }}">
                     <i class="material-icons">store</i>
                     <p>Loja</p>

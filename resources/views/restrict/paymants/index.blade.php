@@ -8,18 +8,12 @@
     </ol>
 </nav>
 
-<nav>
-    {{ $data->links() }}
-</nav>
-
 <div class="col-md-12">
-    <div class="card card-plain">
         <div class="box-body">
             <a href='{{url("/restrict/$page/create")}}' class='btn btn-success white m-b-15'> Novo Registro</a>
-            <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-hover">
-                        <thead class="">
+                    <table id="example" class="table table-striped table-bordered" style="width:100%">
+                        <thead>
                             <tr>
                                 <th>CODIGO DO PAGAMENTO</th>
                                 <th>CODIGO DO TIPO DE PAGAMENTOS</th>
@@ -34,13 +28,13 @@
                         <tbody>
                             @foreach($data as $registro)
                             <tr>
-                                <td> {{ $registro->id }} </td>
-                                <td> {{ $registro->paymants_type_id }} </td>
-                                <td> {{ $registro->datelaunch }} </td>
-                                <td> {{ $registro->datematurity }} </td>
-                                <td> {{ $registro->datepayment }} </td>
-                                <td> {{ $registro->value }} </td>
-                                <td> {{ $registro->complements }} </td>
+                                <td width='115px'> {{ $registro->id }} </td>
+                                <td width='115px'> {{ $registro->paymants_type_id }} </td>
+                                <td width='115px'> {{ $registro->datelaunch }} </td>
+                                <td width='115px'> {{ $registro->datematurity }} </td>
+                                <td width='115px'> {{ $registro->datepayment }} </td>
+                                <td width='115px'> {{ $registro->value }} </td>
+                                <td width='115px'> {{ $registro->complements }} </td>
                                 <td>
                                         <a href='{{url("/restrict/$page/$registro->id/deletar")}}' 
                                            onClick="return confirm('Você quer mesmo deletar?')" 
@@ -59,23 +53,41 @@
                             </tr>
                             @endforeach
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>CODIGO DO PAGAMENTO</th>
+                                <th>CODIGO DO TIPO DE PAGAMENTOS</th>
+                                <th>DATA DE LANCAMENTO</th>
+                                <th>DATA DE VENCIMENTO</th>
+                                <th>DATA DE PAGAMENTO</th>
+                                <th>VALOR</th>
+                                <th>COMPLEMENTOS</th>
+                                <th width='115px'>#</th>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>
         </div>
     </div>
 
-    @push('css')
+@push('css')
 
-    <link rel='stylesheet' href='{{asset('css/sweetalert.css')}}'/>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
 
-    @endpush
+@endpush
 
-    @push('js')
+@push('js')
 
-    @include('sweet::alert')
-    <script src='{{asset('js/sweetalert.min.js')}}'></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 
-    @endpush
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+</script>   
 
-    @endsection
+@endpush
+
+@endsection

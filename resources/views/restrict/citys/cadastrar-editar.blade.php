@@ -1,7 +1,7 @@
 @extends('layouts.restrict.app')
 @section('content')
 <nav aria-label='breadcrumb' class='m-t-20'>
-    <ol class='breadcrumb text-uppercase breadcrumb-arrow'>
+    <ol class='breadcrumb text-uppercase'>
         <li class='breadcrumb-item'><a href='{{url('/restrict')}}'>HOME</a></li>
         <li class='breadcrumb-item'><a href='{{route("$page.index")}}'>{{$titulo}}</a></li>
         <li class='breadcrumb-item active' aria-current='page'>EDIÇÃO DE REGISTRO</li>
@@ -56,9 +56,6 @@
 
 @push('css')
 
-@endpush
-
-@push('js-topo')
 @endpush
 
 @push('js')

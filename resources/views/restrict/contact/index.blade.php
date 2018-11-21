@@ -9,17 +9,11 @@
     </ol>
 </nav>
 
-<nav>
-    {{ $data->links() }}
-</nav>
 
 <div class="col-md-12">
-    <div class="card card-plain">
-        <div class="box-body">
-            <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-hover">
-                        <thead class="text-primary">
+                    <table id="example" class="table table-striped table-bordered" style="width:100%">
+                        <thead>
                             <tr>
                                 <th>CODIGO</th>
                                 <th>NOME</th>
@@ -31,10 +25,10 @@
                         <tbody>
                             @foreach($data as $registro)
                             <tr>
-                                <td>{{ $registro->id }}</td>
-                                <td>{{ $registro->name }}</td>
-                                <td>{{ $registro->subject }}</td>
-                                <td>{{ $registro->created_at }}</td>
+                                <td width='115px'>{{ $registro->id }}</td>
+                                <td width='115px'>{{ $registro->name }}</td>
+                                <td width='115px'>{{ $registro->subject }}</td>
+                                <td width='115px'>{{ $registro->created_at }}</td>
                                 <td>
                                     <a href='{{ url("/restrict/$page/$registro->id") }}' class="btn btn-info btn-sm"><i class="material-icons">details</i></a>
                                     
@@ -49,6 +43,15 @@
                             </tr>
                             @endforeach
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>CODIGO</th>
+                                <th>NOME</th>
+                                <th>ASSUNTO</th>
+                                <th>ENVIADO EM</th>
+                                <th width='115px'>#</th>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>
@@ -56,14 +59,23 @@
     </div>
 </div>
 </div>
-@endsection
+@push('css')
 
-@push('scripts')
-<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
-<script>
-                                            $(document).ready(function() {
-                                            $('#table').DataTable();
-                                            });
-</script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+
 @endpush
+
+@push('js')
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+</script>   
+
+@endpush
+
+@endsection

@@ -19,6 +19,7 @@ class CreateProductsTable extends Migration {
             $table->integer('provider_id')->unsigned();
             $table->foreign('provider_id')->references('id')->on('providers')->onDelete('cascade');
             $table->string('description',1000);
+            $table->string('product_code',7);
             $table->double('weight');
             $table->string('controlled');
             $table->integer('determined_amount');

@@ -20,7 +20,7 @@ class Paymants extends Model {
         'complements',
     ];
     public $rules = [
-        'paymants_type_id' => 'required|numeric,paymants_type_id,((ID{?})),id',
+        'paymants_type_id' => 'required|numeric',
         'datelaunch' => 'required|date',
         'datematurity' => 'required|date',
         'datepayment' => 'required|date',

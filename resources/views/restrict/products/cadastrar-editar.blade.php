@@ -22,8 +22,8 @@
 
                 <div class="card-body">
                     <div class='row'>
-                        <div class="input-field col-md-6">
-                            <label>CODIGO DA CATEGORIA</label>
+                        <div class="input-field col-md-4">
+                            <label>CATEGORIA</label>
                             <select name='category_id' class='form-control'>
                                 @foreach($categorys as $category)
                                 <option 
@@ -33,28 +33,37 @@
                                 </option>
                                 @endforeach
                             </select>
-                        @if ($errors->has('category_id'))
-                        <span class='text-danger'> {{ $errors->first('category_id') }} </span>
-                        @endif
-                    </div>
-                    <div class='input-field col-md-6'>
-                        <label>CODIGO DO FORNECEDOR</label>
-                        <div class="input-group">
-                            <select name='provider_id' class='form-control'>
-                                @foreach($providers as $provider)
-                                <option 
-                                    @if(isset($data->provider_id) && ($data->provider_id==$provider->id)) @php echo 'selected'; @endphp @endif 
-                                    value="{{$provider->id}}" >
-                                    {{$provider->provider}}
-                            </option>
-                            @endforeach
-                        </select>
-                        @if ($errors->has('provider_id'))
-                        <span class='text-danger'> {{ $errors->first('provider_id') }} </span>
-                        @endif
-                    </div>
-                </div>
-            </div>    
+                            @if ($errors->has('category_id'))
+                            <span class='text-danger'> {{ $errors->first('category_id') }} </span>
+                            @endif
+                        </div>
+                        <div class='input-field col-md-4'>
+                            <label>FORNECEDOR</label>
+                            <div class="input-group">
+                                <select name='provider_id' class='form-control'>
+                                    @foreach($providers as $provider)
+                                    <option 
+                                        @if(isset($data->provider_id) && ($data->provider_id==$provider->id)) @php echo 'selected'; @endphp @endif 
+                                        value="{{$provider->id}}" >
+                                        {{$provider->provider}}
+                                </option>
+                                @endforeach
+                                </select>
+                                @if ($errors->has('provider_id'))
+                                <span class='text-danger'> {{ $errors->first('provider_id') }} </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="input-field col-md-4">
+                            <label>CODIGO DO PRODUTO</label>
+                            <div class="input-group">
+                                {!! Form::number('product_code', null, ['required' => 'yes', 'min' => '1','class' => 'form-control']) !!}
+                                @if ($errors->has('product_code'))
+                                <span class='text-danger'> {{ $errors->first('product_code') }} </span>
+                                @endif
+                            </div>
+                        </div>
+                    </div>    
             <div class="row m-t-20">
                 <div class='input-field col-md-4'>
                     <label>PESO</label>

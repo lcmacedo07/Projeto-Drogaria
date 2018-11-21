@@ -99,14 +99,11 @@
     </div>
 
     @push('css')
-    <link rel='stylesheet' href='{{asset('bower_components/bootstrap-select/dist/css/bootstrap-select.css')}}'/>
-    @endpush
 
-    @push('js-topo')
     @endpush
 
     @push('js')
-    <script src="{{asset('bower_components/bootstrap-select/dist/js/bootstrap-select.js')}}"></script>
+
     @endpush
     
     @endsection

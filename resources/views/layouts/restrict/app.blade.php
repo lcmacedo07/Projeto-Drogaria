@@ -16,9 +16,10 @@
         <link href="{{ asset('assets/backend/css/material-dashboard.css?v=2.1.0') }}" rel="stylesheet" />
         <link href="{{ asset('assets/backend/demo/demo.css')}}" rel="stylesheet" />
         
-        
         <link rel="stylesheet" href="https://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
 
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+        
         @stack('css')
 
     </head>
@@ -32,12 +33,6 @@
             <div class="content">
                 @yield('content') 
             </div>
-
-<!--            <script>
-                const x = new Date().getFullYear();
-                let date = document.getElementById('date');
-                date.innerHTML = '&copy; ' + x + date.innerHTML;
-            </script>-->
 
         </div>
 
@@ -104,8 +99,8 @@
         <script src="{{ asset('assets/backend/demo/demo.js') }}"></script>
 
         <script>
-$(document).ready(function () {
-    $().ready(function () {
+        $(document).ready(function () {
+            $().ready(function () {
         $sidebar = $('.sidebar');
 
         $sidebar_img_container = $sidebar.find('.sidebar-background');
@@ -272,6 +267,7 @@ $(document).ready(function () {
 
             });
         </script>
+
 
         <script src="https://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
         {!! Toastr::message() !!}    
